@@ -12,6 +12,7 @@
         <module>lehuan-common</module>
         <module>lehuan-sellergoods-interface</module>
         <module>lehuan-sellergoods-service</module>
+        <module>lehuan-manager-web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->
