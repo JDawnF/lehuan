@@ -1,51 +1,51 @@
-<!--<?xml version="1.0" encoding="UTF-8"?>-->
-<!--<beans:beans xmlns="http://www.springframework.org/schema/security"-->
-             <!--xmlns:beans="http://www.springframework.org/schema/beans"-->
-             <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
-             <!--xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"-->
-             <!--xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd-->
-						<!--http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">-->
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <!--&lt;!&ndash; 以下页面不被拦截,根目录下的页面不用拦截，拦截的是admin中的 &ndash;&gt;-->
-    <!--<http pattern="/*.html" security="none"></http>-->
-    <!--<http pattern="/css/**" security="none"></http>-->
-    <!--<http pattern="/img/**" security="none"></http>-->
-    <!--<http pattern="/js/**" security="none"></http>-->
-    <!--<http pattern="/plugins/**" security="none"></http>-->
-    <!--<http pattern="/seller/add.do" security="none"></http>-->
-    <!--&lt;!&ndash; 页面拦截规则, /**包括根目录及其目录下的所有资源，如果这里只有/*表示根目录的资源，-->
-    <!--与web.xml中不一样，use-expressions表示是否启动SPEL表达式，默认是true&ndash;&gt;-->
-    <!--<http use-expressions="false">-->
-        <!--&lt;!&ndash;这里必须由ROLE_开头，表示当前用户必须有ROLE_USER的角色才可以访问根目录及其目录下的所有资源&ndash;&gt;-->
-        <!--<intercept-url pattern="/**" access="ROLE_SELLER"/>-->
-        <!--&lt;!&ndash;开启表单登录功能&ndash;&gt;-->
-        <!--<form-login login-page="/shoplogin.html" default-target-url="/admin/index.html"-->
-                    <!--authentication-failure-url="/shoplogin.html" always-use-default-target="true"/>-->
-        <!--<csrf disabled="true"/>-->
-        <!--<headers>-->
-            <!--&lt;!&ndash;使其允许使用iframe框架页&ndash;&gt;-->
-            <!--<frame-options policy="SAMEORIGIN"/>-->
-        <!--</headers>-->
-        <!--<logout/>-->
-    <!--</http>-->
+    <!-- 以下页面不被拦截,根目录下的页面不用拦截，拦截的是admin中的 -->
+    <http pattern="/*.html" security="none"></http>
+    <http pattern="/css/**" security="none"></http>
+    <http pattern="/img/**" security="none"></http>
+    <http pattern="/js/**" security="none"></http>
+    <http pattern="/plugins/**" security="none"></http>
+    <http pattern="/seller/add.do" security="none"></http>
+    <!-- 页面拦截规则, /**包括根目录及其目录下的所有资源，如果这里只有/*表示根目录的资源，
+    与web.xml中不一样，use-expressions表示是否启动SPEL表达式，默认是true-->
+    <http use-expressions="false">
+        <!--这里必须由ROLE_开头，表示当前用户必须有ROLE_USER的角色才可以访问根目录及其目录下的所有资源-->
+        <intercept-url pattern="/**" access="ROLE_SELLER"/>
+        <!--开启表单登录功能-->
+        <form-login login-page="/shoplogin.html" default-target-url="/admin/index.html"
+                    authentication-failure-url="/shoplogin.html" always-use-default-target="true"/>
+        <csrf disabled="true"/>
+        <headers>
+            <!--使其允许使用iframe框架页-->
+            <frame-options policy="SAMEORIGIN"/>
+        </headers>
+        <logout/>
+    </http>
 
-    <!--&lt;!&ndash; 认证管理器 &ndash;&gt;-->
-    <!--<authentication-manager>-->
-        <!--<authentication-provider user-service-ref="userDetailService">-->
-            <!--&lt;!&ndash;<user-service>&ndash;&gt;-->
-                <!--&lt;!&ndash;<user name="admin" password="123456" authorities="ROLE_SELLER"/>&ndash;&gt;-->
-                <!--&lt;!&ndash;<user name="baichen" password="123bai" authorities="ROLE_SELLER"/>&ndash;&gt;-->
-            <!--&lt;!&ndash;</user-service>&ndash;&gt;-->
-            <!--<password-encoder ref="bcryptEncoder"></password-encoder>-->
-        <!--</authentication-provider>-->
-    <!--</authentication-manager>-->
-    <!--&lt;!&ndash;认证类&ndash;&gt;-->
-    <!--<beans:bean id="userDetailService" class="com.lehuan.shop.service.UserDetailsServiceImpl">-->
-        <!--<beans:property name="sellerService" ref="sellerService"></beans:property>-->
-    <!--</beans:bean>-->
-    <!--<beans:bean id="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>-->
-    <!--&lt;!&ndash; 引用dubbo 服务 &ndash;&gt;-->
-    <!--<dubbo:application name="lehuan-shop-web" />-->
-    <!--<dubbo:registry address="zookeeper://192.168.98.135:2181"/>-->
-    <!--<dubbo:reference id="sellerService" interface="com.lehuan.sellergoods.service.SellerService"/>-->
-<!--</beans:beans>-->
+    <!-- 认证管理器 -->
+    <authentication-manager>
+        <authentication-provider user-service-ref="userDetailService">
+            <!--<user-service>-->
+                <!--<user name="admin" password="123456" authorities="ROLE_SELLER"/>-->
+                <!--<user name="baichen" password="123bai" authorities="ROLE_SELLER"/>-->
+            <!--</user-service>-->
+            <password-encoder ref="bcryptEncoder"></password-encoder>
+        </authentication-provider>
+    </authentication-manager>
+    <!--认证类-->
+    <beans:bean id="userDetailService" class="com.lehuan.shop.service.UserDetailsServiceImpl">
+        <beans:property name="sellerService" ref="sellerService"></beans:property>
+    </beans:bean>
+    <beans:bean id="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    <!-- 引用dubbo 服务 -->
+    <dubbo:application name="lehuan-shop-web" />
+    <dubbo:registry address="zookeeper://192.168.98.135:2181"/>
+    <dubbo:reference id="sellerService" interface="com.lehuan.sellergoods.service.SellerService"/>
+</beans:beans>
