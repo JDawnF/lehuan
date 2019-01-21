@@ -1,22 +1,23 @@
 package com.lehuan.sellergoods.service.impl;
 
-import com.alibaba.dubbo.config.annotation.Service;
-import com.alibaba.fastjson.JSON;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.lehuan.group.Goods;
-import com.lehuan.mapper.*;
-import com.lehuan.pojo.*;
-import com.lehuan.pojo.TbGoodsExample.Criteria;
-import com.lehuan.sellergoods.service.GoodsService;
-import entity.PageResult;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+import com.alibaba.fastjson.JSON;
+import com.lehuan.group.Goods;
+import com.lehuan.mapper.*;
+import com.lehuan.pojo.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.alibaba.dubbo.config.annotation.Service;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.lehuan.pojo.TbGoodsExample.Criteria;
+import com.lehuan.sellergoods.service.GoodsService;
+
+import entity.PageResult;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 服务实现层
@@ -242,7 +243,7 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public List<TbItem> findItemListByGoodsIdAndStatus(Long[] goodsIds, String status) {
         TbItemExample example=new TbItemExample();
-        com.lehuan.pojo.TbItemExample.Criteria criteria = example.createCriteria();
+        TbItemExample.Criteria criteria = example.createCriteria();
         criteria.andGoodsIdIn(Arrays.asList(goodsIds));   //商品ID集合
         criteria.andStatusEqualTo(status);   //状态
         return itemMapper.selectByExample(example);
