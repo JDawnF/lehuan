@@ -1,12 +1,11 @@
 package com.lehuan.sellergoods.service;
-
-import com.lehuan.group.Specification;
-import com.lehuan.pojo.TbSpecification;
-import entity.PageResult;
-
 import java.util.List;
 import java.util.Map;
 
+import com.lehuan.group.Specification;
+import com.lehuan.pojo.TbSpecification;
+
+import entity.PageResult;
 /**
  * 服务层接口
  * @author Administrator

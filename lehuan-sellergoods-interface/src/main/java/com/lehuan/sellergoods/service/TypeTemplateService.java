@@ -1,11 +1,10 @@
 package com.lehuan.sellergoods.service;
-
-import com.lehuan.pojo.TbTypeTemplate;
-import entity.PageResult;
-
 import java.util.List;
 import java.util.Map;
 
+import com.lehuan.pojo.TbTypeTemplate;
+
+import entity.PageResult;
 /**
  * 服务层接口
  * @author Administrator

@@ -1,10 +1,8 @@
 package com.lehuan.sellergoods.service;
-
-import com.lehuan.pojo.TbGoodsDesc;
-import entity.PageResult;
-
 import java.util.List;
+import com.lehuan.pojo.TbGoodsDesc;
 
+import entity.PageResult;
 /**
  * 服务层接口
  * @author Administrator
