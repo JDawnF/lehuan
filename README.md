@@ -1,5 +1,5 @@
 # lehuan
-分布式购物商城
+伪分布式购物商城
 
 项目描述：
 利用maven和ssm搭建框架，使用activeMQ作为消息队列，dubbo和zookeeper作为任务调度框架，利用solr提供搜索服务，redis提供缓存，单点登录等构建的一个购物
