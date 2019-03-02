@@ -1,4 +1,4 @@
-package com.lehuan.manager.controller;
+package com.lehuan.shop.controller;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;

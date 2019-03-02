@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../js/controller/sellerController.js"></script>
 
 </head>
-
+<!--指令searchEntity={status:'0'}表示未审核的-->
 <body class="hold-transition skin-red sidebar-mini" ng-app="lehuan" ng-controller="sellerController"
       ng-init="searchEntity={status:'0'}">
 <!-- .box-body -->
@@ -127,11 +127,11 @@
                                     <td>{{entity.nickName}}</td>
                                 </tr>
                                 <tr>
-                                    <td>公司电话</td>
+                                    <td>店铺电话</td>
                                     <td>{{entity.telephone}}</td>
                                 </tr>
                                 <tr>
-                                    <td>公司详细地址</td>
+                                    <td>店铺详细地址</td>
                                     <td>{{entity.addressDetail}}</td>
                                 </tr>
                             </table>
