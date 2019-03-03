@@ -32,6 +32,7 @@
 
 <div class="box-body">
     <ol class="breadcrumb">
+        <!--绑定面包屑,通过两个实体类型的变量entity_1，entity_2进行绑定-->
         <li>
             <a href="#" ng-click="grade=1;selectList({id:0})">顶级分类列表</a>
         </li>
@@ -53,7 +54,9 @@
                     <button type="button" class="btn btn-default" title="新建" data-toggle="modal"
                             data-target="#editModal"><i class="fa fa-file-o"></i> 新建
                     </button>
-                    <button type="button" class="btn btn-default" title="删除" on-click="dele()"><i class="fa fa-trash-o"></i> 删除</button>
+                    <button type="button" class="btn btn-default" title="删除" ng-click="dele()"><i
+                            class="fa fa-trash-o"></i> 删除
+                    </button>
                     <button type="button" class="btn btn-default" title="刷新"><i class="fa fa-check"></i> 刷新</button>
 
                 </div>
@@ -84,11 +87,13 @@
                     {{entity.typeId}}
                 </td>
                 <td class="text-center">
+                    <!--当级别不等于3的时候才显示“查询下级”按钮-->
 											  <span ng-if="grade!=3">
 		                                      <button type="button" class="btn bg-olive btn-xs"
                                                       ng-click="setGrade(grade+1);selectList(entity)">查询下级</button>
 											  </span>
-                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)">修改
+                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal"
+                            ng-click="findOne(entity.id)">修改
                     </button>
                 </td>
             </tr>

@@ -37,7 +37,7 @@ app.controller('itemCatController', function ($scope, $controller, itemCatServic
         if ($scope.entity.id != null) {//如果有ID
             serviceObject = itemCatService.update($scope.entity); //修改
         } else {
-            $scope.entity.parentId=$scope.parentId;//赋予上级ID
+            $scope.entity.parentId = $scope.parentId;//赋予上级ID
             serviceObject = itemCatService.add($scope.entity);//增加
         }
         serviceObject.success(
@@ -45,7 +45,7 @@ app.controller('itemCatController', function ($scope, $controller, itemCatServic
                 if (response.success) {
                     //重新查询
                     $scope.findByParentId($scope.parentId);//重新加载,刷新列表
-                   // $scope.reloadList();//重新加载
+                    // $scope.reloadList();//重新加载
                 } else {
                     alert(response.message);
                 }
@@ -79,35 +79,37 @@ app.controller('itemCatController', function ($scope, $controller, itemCatServic
         );
     }
 
-    $scope.parentId=0;  // 记录上级ID，因为页面打开parentId是为0的商品
+    $scope.parentId = 0;  // 记录上级ID，因为页面打开parentId是为0的商品
     //根据上级分类查询商品分类列表
     $scope.findByParentId = function (parentId) {
-        $scope.parentId=parentId;
+        $scope.parentId = parentId; //记住上级ID，添加商品分类的时候就可以在指定的位置添加
         itemCatService.findByParentId(parentId).success(
             function (response) {
                 $scope.list = response;
             }
         );
     }
-
-    $scope.grade=1; //设置默认当前级别
-    //设置级别
-    $scope.setGrade=function (value) {
-        $scope.grade=value;
+    //面包屑导航
+    $scope.grade = 1; //设置默认当前级别
+    //设置级别,要加上$scope，才会跟上面那个是同一个变量
+    $scope.setGrade = function (value) {
+        $scope.grade = value;
     }
-    $scope.selectList=function (p_entity) {
-        if ($scope.grade==1){
-            $scope.entity_1=null;
-            $scope.entity_2=null;
+    //读取列表
+    $scope.selectList = function (p_entity) {
+        if ($scope.grade == 1) {//如果为1级
+            $scope.entity_1 = null;
+            $scope.entity_2 = null;
         }
-        if ($scope.grade==2){
-            $scope.entity_1=p_entity;
-            $scope.entity_2=null;
+        if ($scope.grade == 2) {
+            $scope.entity_1 = p_entity;
+            $scope.entity_2 = null;
         }
-        if ($scope.grade==3){
-            $scope.entity_2=p_entity;
+        if ($scope.grade == 3) {
+            $scope.entity_2 = p_entity;
         }
         //在这里调用，前端只要调用这个面包屑方法即可
+        //查询此级下级列表
         $scope.findByParentId(p_entity.id);
     }
 });
