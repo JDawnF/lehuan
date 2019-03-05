@@ -93,7 +93,7 @@ public class GoodsServiceImpl implements GoodsService {
         TbSeller seller = sellerMapper.selectByPrimaryKey(goods.getGoods().getSellerId());
         item.setSeller(seller.getNickName());
 
-        //图片地址（取spu的第一个图片）
+        //图片地址（取spu的第一个图片）,主要看商品规格表中item_images字段，图片还有一个颜色的属性，而url是其中的key，所以就取这个url的值即可
         List<Map> imageList = JSON.parseArray(goods.getGoodsDesc().getItemImages(), Map.class);
         if (imageList.size() > 0) {
             item.setImage((String) imageList.get(0).get("url"));
@@ -102,6 +102,7 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     private void saveItemList(Goods goods) {
+        //用户是否选择显示规格
         if ("1".equals(goods.getGoods().getIsEnableSpec())) {
             for (TbItem item : goods.getItemList()) {
 //            构建标题  SPU名称+规格选项值,规格选项值在item表中有
