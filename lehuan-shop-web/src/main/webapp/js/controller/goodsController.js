@@ -183,7 +183,8 @@ app.controller('goodsController', function ($scope, $controller, $location, good
                     $scope.typeTemplate.brandIds = JSON.parse($scope.typeTemplate.brandIds);//品牌列表
                     //扩展属性，首先，在模板表tb_type_template中会有一个扩展属性custom_attribute_items的字段，
                     // 然后我们填充对应的扩展属性和值之后就会存放到tb_goods_desc表里的字段custom_attribute_items
-                    //如果没有ID，则加载模板中的扩展数据
+                    //如果没有ID，则加载模板中的扩展数据，$location.search() 设置或获取 网页地址跟在问号后面的部分
+                    //注意url必须为这样：http://localhost:9102/admin/goods_edit.html#?id=149187842867969。?前面有个#
                     if ($location.search()['id'] == null) {
                         $scope.entity.goodsDesc.customAttributeItems = JSON.parse($scope.typeTemplate.customAttributeItems);
                     }
@@ -196,13 +197,14 @@ app.controller('goodsController', function ($scope, $controller, $location, good
                 })
         });
         //更新参数属性，如果有就添加，没有就创造一个
+        //这里不大支持换行，即参数要写到一行，用一个$event记录源,获取键盘事件
         $scope.updateSpecAttribute = function ($event, name, value) {
             var object = $scope.searchObjectByKey($scope.entity.goodsDesc.specificationItems, 'attributeName', name);
             if (object != null) {
                 if ($event.target.checked) {
                     object.attributeValue.push(value);
                 } else {
-                    //取消勾选,移除选项
+                    //取消勾选,移除选项,即取消规格列表中的选项
                     object.attributeValue.splice(object.attributeValue.indexOf(value), 1);
                     if (object.attributeValue.length == 0) {
                         $scope.entity.goodsDesc.specificationItems.splice(
@@ -227,6 +229,7 @@ app.controller('goodsController', function ($scope, $controller, $location, good
             }
         }
         //添加列值,相当于控制器的一个私有方法
+    //参数相当于哪个规格表，有哪些规格，添加了哪些规格属性，一个规格可以对应多个属性
         addColumn = function (list, columnName, columnValues) {
             //新的集合
             var newList = [];
