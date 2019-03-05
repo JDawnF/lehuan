@@ -75,6 +75,7 @@
                                 <tr>
                                     <td>
                                         <!--ng-options属性可以在表达式中使用数组或对象来自动生成一个select中的option列表。
+                                        即用ng-options遍历itemCat1List数组，遍历得到的结果填充select
                                         itemCat1List相当于数据库中分类表中的一条记录,然后将变量存入goods表中的category1Id字段-->
                                         <select class="form-control" ng-model="entity.goods.category1Id"
                                                 ng-options="item.id as item.name for item in itemCat1List">
@@ -204,6 +205,7 @@
                     <div class="row data-type">
                         <div class="col-md-2 title">是否启用规格</div>
                         <div class="col-md-10 data">
+                            <!--goods表中的 isEnableSpec字段-->
                             <input type="checkbox" ng-model="entity.goods.isEnableSpec" ng-true-value="1"
                                    ng-false-value="0">
                             <button type="button" class="btn btn-default" title="自定义规格" data-target="#mySpecModal"
