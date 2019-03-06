@@ -120,6 +120,7 @@ app.controller('goodsController', function ($scope, $controller, $location, good
                 function (response) {
                     //如果上传成功，取出url
                     if (response.success) {
+                        //message是UploadController返回的url
                         $scope.image_entity.url = response.message;//设置文件地址
                     } else {
                         alert(response.message);
