@@ -45,7 +45,7 @@ public class ItemCatController {
 	/**
 	 * 增加
 	 * @param itemCat
-	 * @return
+	 * @returnItemCatService
 	 */
 	@RequestMapping("/add")
 	public Result add(@RequestBody TbItemCat itemCat){
