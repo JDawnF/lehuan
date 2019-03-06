@@ -148,7 +148,6 @@
                 </div>
 
                 <!--图片上传-->
-                <!--图片上传-->
                 <div class="tab-pane" id="pic_upload">
                     <div class="row data-type">
                         <!-- 颜色图片 -->
@@ -372,9 +371,11 @@
 <script type="text/javascript">
 
     var editor;
+    // KindEditor是一个类,下面是初始化KindEditor
     KindEditor.ready(function (K) {
         editor = K.create('textarea[name="content"]', {
             allowFileManager: true
+        //    allowFileManager 【是否允许浏览服务器已上传文件】 默认值是：false   如果需要其他属性也可以添加
         });
     });
 
