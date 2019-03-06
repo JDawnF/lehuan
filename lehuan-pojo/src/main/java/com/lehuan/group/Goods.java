@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * @program: lehuan-parent
- * @description: 商品组合实体类，商品表和商品规格表
+ * @description: 商品组合实体类，商品表和商品规格表，相当于DTO
  * @author: baichen
  * @create: 2018-10-17 20:23
  **/
