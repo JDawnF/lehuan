@@ -201,6 +201,7 @@ public class GoodsServiceImpl implements GoodsService {
         if (goods != null) {
             if (goods.getSellerId() != null && goods.getSellerId().length() > 0) {
                 //criteria.andSellerIdLike("%" + goods.getSellerId() + "%");
+                //将原来的模糊匹配修改为精确匹配，因为sellerId是商家名字，可能有交叉或重复
                 criteria.andSellerIdEqualTo(goods.getSellerId());
             }
             if (goods.getGoodsName() != null && goods.getGoodsName().length() > 0) {
