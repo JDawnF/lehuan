@@ -135,7 +135,7 @@ app.controller('goodsController', function ($scope, $controller, $location, good
         }
 //    列表中移除照片
         $scope.remove_image_entity = function (index) {
-            $scope.entity.goodsDesc.itemImages.splice(index, 1);
+            $scope.entity.goodsDesc.itemImages.GoodsController(index, 1);
         }
 //    查询一级商品分类下拉列表
         $scope.selectItemCat1List = function () {
@@ -245,7 +245,8 @@ app.controller('goodsController', function ($scope, $controller, $location, good
             }
             return newList;
         }
-        //商品状态
+        //商品状态,以为从数据库中取出来的是各种状态对应的数字表示
+        // 所以这里要声明一个数组对应数据库中相应的数值，然后在前端显示对应的状态
         $scope.status = ['未审核', '已审核', '审核未通过', '已关闭'];
         $scope.itemCatList = [];  //商品分类列表,是这样的格式：['','']
         //查询商品分类列表
@@ -253,6 +254,7 @@ app.controller('goodsController', function ($scope, $controller, $location, good
             itemCatService.findAll().success(
                 function (response) {
                     for (var i = 0; i < response.length; i++) {
+                        // response返回三级分类数组
                         $scope.itemCatList[response[i].id] = response[i].name;
                     }
                 }
