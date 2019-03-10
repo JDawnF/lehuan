@@ -122,7 +122,7 @@ public class GoodsController {
 	public PageResult search(@RequestBody TbGoods goods, int page, int rows  ){
 		//获取商家ID，展示商家商品列表，获取到商家ID后通过ID去查
 		String sellerId = SecurityContextHolder.getContext().getAuthentication().getName();
-		goods.setSellerId(sellerId);
+		goods.setSellerId(sellerId);	//添加查询条件
 		return goodsService.findPage(goods, page, rows);		
 	}
 	
