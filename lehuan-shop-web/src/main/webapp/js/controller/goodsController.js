@@ -1,4 +1,4 @@
-//控制层
+//商品控制层（商家后台）
 app.controller('goodsController', function ($scope, $controller, $location, goodsService, uploadService, itemCatService, typeTemplateService) {
 
         $controller('baseController', {$scope: $scope});//继承
@@ -29,14 +29,15 @@ app.controller('goodsController', function ($scope, $controller, $location, good
             if (id == null) {
                 return;
             }
+            //从数据库中查询出来的是字符串，我们必须将其转换为json对象才能实现信息的回显。
             goodsService.findOne(id).success(
                 function (response) {
                     $scope.entity = response;
                     //向富文本编辑器添加商品介绍
                     editor.html($scope.entity.goodsDesc.introduction);
-                    //显示图片列表,先转格式
+                    //显示图片列表,将图片列表由字符串转换为json集合对象
                     $scope.entity.goodsDesc.itemImages = JSON.parse($scope.entity.goodsDesc.itemImages);
-                    //显示扩展属性
+                    //显示扩展属性，转成json集合对象
                     $scope.entity.goodsDesc.customAttributeItems = JSON.parse($scope.entity.goodsDesc.customAttributeItems);
                     //规格
                     $scope.entity.goodsDesc.specificationItems = JSON.parse($scope.entity.goodsDesc.specificationItems);
@@ -69,11 +70,12 @@ app.controller('goodsController', function ($scope, $controller, $location, good
 
         //保存
         $scope.save = function () {
-            //提取文本编辑器的值
+            //提取文本编辑器的值,商品介绍
             $scope.entity.goodsDesc.introduction=editor.html();
-            var serviceObject;//服务层对象
-            if ($scope.entity.goods.id != null) {//如果有ID
-                alert($scope.entity.id)
+            var serviceObject;  //服务层对象
+            if ($scope.entity.goods.id != null) {   //如果有ID,商品不为空
+                // alert($scope.entity.id)
+                //直接调用后端的修改商品的接口
                 serviceObject = goodsService.update($scope.entity); //修改
             } else {
                 serviceObject = goodsService.add($scope.entity);//增加
@@ -135,7 +137,7 @@ app.controller('goodsController', function ($scope, $controller, $location, good
         }
 //    列表中移除照片
         $scope.remove_image_entity = function (index) {
-            $scope.entity.goodsDesc.itemImages.GoodsController(index, 1);
+            $scope.entity.goodsDesc.itemImages.splice(index, 1);
         }
 //    查询一级商品分类下拉列表
         $scope.selectItemCat1List = function () {
@@ -184,7 +186,8 @@ app.controller('goodsController', function ($scope, $controller, $location, good
                     $scope.typeTemplate.brandIds = JSON.parse($scope.typeTemplate.brandIds);//品牌列表
                     //扩展属性，首先，在模板表tb_type_template中会有一个扩展属性custom_attribute_items的字段，
                     // 然后我们填充对应的扩展属性和值之后就会存放到tb_goods_desc表里的字段custom_attribute_items
-                    //如果没有ID，则加载模板中的扩展数据，$location.search() 设置或获取 网页地址跟在问号后面的部分
+                    //如果没有ID，则加载模板中的扩展数据，防止与读取商品扩展属性的代码冲突
+                    // $location.search() 设置或获取 网页地址跟在问号后面的部分
                     //注意url必须为这样：http://localhost:9102/admin/goods_edit.html#?id=149187842867969。?前面有个#
                     if ($location.search()['id'] == null) {
                         $scope.entity.goodsDesc.customAttributeItems = JSON.parse($scope.typeTemplate.customAttributeItems);
@@ -263,12 +266,13 @@ app.controller('goodsController', function ($scope, $controller, $location, good
         //根据规格名称和选项名称返回是否被勾选,返回true或false
         $scope.checkAttributeValue = function (specName, optionName) {
             var items = $scope.entity.goodsDesc.specificationItems;
-            //searchObjectByKey在list集合中根据某key的值查询对象,嵌套数组
-            //[{“attributeName”:”规格名称”,”attributeValue”:[“规格选项1”,“规格选项2”.... ]  } , ....  ]
-            //object返回最外层数组
+            //searchObjectByKey在数组中根据attributeName这个key的值查询是否等于specName，如果是返回整个字典
+            //[{“attributeName”:”规格名称”,”attributeValue”:[“规格选项1”,“规格选项2”.... ]} ,
+            // ....  ]
+            //object返回最外层数组，attributeName表示
             var object = $scope.searchObjectByKey(items, 'attributeName', specName);
             if (object != null) {
-                //如果可以查到规格选项
+                //如果可以查到规格选项，判断attributeValue这个key所对应的数组是否有值，如果有返回true
                 if (object.attributeValue.indexOf(optionName) >= 0) {
                     return true;
                 } else {
