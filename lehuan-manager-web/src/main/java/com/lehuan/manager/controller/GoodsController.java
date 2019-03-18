@@ -175,8 +175,16 @@ public class GoodsController {
      * @param ids
      * @param status
      */
-//    @RequestMapping("/updateStatus")
-//    public Result updateStatus(Long[] ids, String status) {
+    @RequestMapping("/updateStatus")
+    public Result updateStatus(Long[] ids, String status) {
+        try {
+            goodsService.updateStatus(ids, status);
+            return new Result(true, "成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "失败");
+        }
+
 //        try {
 //            goodsService.updateStatus(ids, status);
 //            //按照SPU ID查询 SKU列表(状态为1)
@@ -212,7 +220,7 @@ public class GoodsController {
 //            e.printStackTrace();
 //            return new Result(false, "修改状态失败");
 //        }
-//    }
+    }
 
     /**
      * 生成静态页（测试）
