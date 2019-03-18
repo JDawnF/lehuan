@@ -81,22 +81,24 @@ app.controller('goodsController', function ($scope, $controller, goodsService, i
     $scope.itemCatList = [];//商品分类列表
     //查询商品分类
     $scope.findItemCatList = function () {
+        // findAll返回的是一个商品分类列表，列表中每个元素报错id, parent_id, name, type_id
         itemCatService.findAll().success(
             function (response) {
                 for (var i = 0; i < response.length; i++) {
+                    // 对上面定义的商品分类列表赋值
                     $scope.itemCatList[response[i].id] = response[i].name;
                 }
             }
         );
     }
-    //更改状态
-    $scope.updateStatus=function(status){
-        goodsService.updateStatus($scope.selectIds,status).success(
-            function(response){
-                if(response.success){//成功
+    //更改商品状态
+    $scope.updateStatus = function (status) {
+        goodsService.updateStatus($scope.selectIds, status).success(
+            function (response) {
+                if (response.success) {//成功
                     $scope.reloadList();//刷新列表
-                    $scope.selectIds=[];//清空ID集合
-                }else{
+                    $scope.selectIds = [];//清空ID集合
+                } else {
                     alert(response.message);
                 }
             }

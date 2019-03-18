@@ -82,6 +82,7 @@
             </thead>
             <tbody>
             <tr ng-repeat="entity in list">
+                <!--循环商品列表，并更新对应的状态值-->
                 <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
                 <td>{{entity.id}}</td>
                 <td>{{entity.goodsName}}</td>
@@ -99,6 +100,7 @@
             </tbody>
         </table>
         <!--数据列表/-->
+        <!--分页控件-->
         <tm-pagination conf="paginationConf"></tm-pagination>
 
     </div>
