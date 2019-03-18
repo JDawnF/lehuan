@@ -146,7 +146,7 @@ public class GoodsServiceImpl implements GoodsService {
         criteria.andGoodsIdEqualTo(goods.getGoods().getId());
         itemMapper.deleteByExample(example);
         //插入新的SKU列表数据
-        saveItemList(goods);
+        saveItemList(goods);//插入商品SKU列表数据
     }
 
     /**

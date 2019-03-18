@@ -74,7 +74,7 @@ public class GoodsController {
 		//首先判断商品是否是该商家的商品
 		Goods goods1 = goodsService.findOne(goods.getGoods().getId());
 		if (!goods1.getGoods().getSellerId().equals(sellerId)||!goods.getGoods().getSellerId().equals(sellerId)){
-			return new Result(false,"非法操作");
+			return new Result(false,"非法操作,此商品不是当前商家所有");
 		}
 		try {
 			goodsService.update(goods);
