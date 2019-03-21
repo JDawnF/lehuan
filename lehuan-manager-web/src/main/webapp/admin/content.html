@@ -89,6 +89,7 @@
                 <td>
                     <img alt="" src="{{entity.pic}}" width="100px" height="50px">
                 </td>
+                <!--广告状态-->
                 <td>{{status[entity.status]}}</td>
                 <td>{{entity.sortOrder}}</td>
 
@@ -119,9 +120,7 @@
             <div class="modal-body">
                 <table class="table table-bordered table-striped" width="800px">
                     <tr>
-
                         <td>内容类目</td>
-
                         <td>
                             <select class="form-control" ng-model="entity.categoryId"
                                     ng-options="item.id as item.name for item in contentCategoryList"></select>

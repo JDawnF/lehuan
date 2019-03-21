@@ -1,5 +1,5 @@
  //控制层 
-app.controller('contentController' ,function($scope,$controller   ,contentService,uploadService,contentCategoryService){	
+app.controller('contentController' ,function($scope,$controller,contentService,uploadService,contentCategoryService){
 	
 	$controller('baseController',{$scope:$scope});//继承
 	
@@ -77,7 +77,7 @@ app.controller('contentController' ,function($scope,$controller   ,contentServic
 		);
 	}
 	
-	//上传图片
+	//上传广告图
 	$scope.uploadFile=function(){
 		uploadService.uploadFile().success(
 			function(response){
@@ -96,7 +96,7 @@ app.controller('contentController' ,function($scope,$controller   ,contentServic
 		);	
 	}
 	
-	//查询广告分类 列表
+	//查询/加载广告分类 列表
 	$scope.findContentCategoryList=function(){
 		contentCategoryService.findAll().success(
 			function(response){
@@ -104,7 +104,7 @@ app.controller('contentController' ,function($scope,$controller   ,contentServic
 			}
 		);
 	}
-	
+	// 定义广告状态数组
 	$scope.status=['无效','有效'];
     
 });	
