@@ -14,6 +14,9 @@
         <module>lehuan-sellergoods-service</module>
         <module>lehuan-manager-web</module>
         <module>lehuan-shop-web</module>
+        <module>lehuan-content-interface</module>
+        <module>lehuan-content-service</module>
+        <module>lehuan-portal-web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->
