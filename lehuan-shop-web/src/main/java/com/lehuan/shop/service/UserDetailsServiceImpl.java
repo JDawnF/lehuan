@@ -16,7 +16,7 @@ import java.util.List;
  * @program: lehuan-parent
  * @description: 用户详情
  * @author: baichen
- * @create: 2018-10-04 09:59
+ *  2018-10-04 09:59
  * 这里不采用dubbo的@Reference注解，而是通过dubbo的配置文件的方式调用服务，需要有setter方法
  **/
 public class UserDetailsServiceImpl implements UserDetailsService {

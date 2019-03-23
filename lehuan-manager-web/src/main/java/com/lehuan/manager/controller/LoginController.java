@@ -11,7 +11,6 @@ import java.util.Map;
  * @program: lehuan-parent
  * @description: 登录相关的控制器
  * @author: baichen
- * @create: 2018-10-03 20:40
  **/
 @RestController
 @RequestMapping("/login")

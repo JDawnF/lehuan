@@ -12,7 +12,7 @@ import java.util.Map;
  * @program:
  * @description: 商品表
  * @author: baichen
- * @create: 2018-11-12 00:08
+ *  2018-11-12 00:08
  **/
 public class TbItem implements Serializable {
 
@@ -71,6 +71,7 @@ public class TbItem implements Serializable {
     @Field("item_seller")
     private String seller;
 
+//    添加属性,规格参数，因为规格属性等是多样的，所以要用动态域
     @Dynamic
     @Field("item_spec_*")   //item_spec_网络等等
     private Map<String,String> specMap;

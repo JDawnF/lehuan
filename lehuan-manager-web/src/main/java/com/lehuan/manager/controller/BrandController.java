@@ -16,7 +16,6 @@ import java.util.Map;
  * @program: lehuan-parent
  * @description: 商品品牌控制层
  * @author: baichen
- * @create: 2018-09-29 21:16
  **/
 @RestController
 @RequestMapping("/brand")

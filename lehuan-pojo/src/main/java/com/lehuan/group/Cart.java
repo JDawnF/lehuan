@@ -9,7 +9,7 @@ import java.util.List;
  * @program: lehuan-parent
  * @description: 购物车实体类,对每个商家的购物车进行的封装
  * @author: baichen
- * @create: 2018-12-11 21:02
+ *  2018-12-11 21:02
  **/
 public class Cart implements Serializable {
     private String sellerId;//商家ID

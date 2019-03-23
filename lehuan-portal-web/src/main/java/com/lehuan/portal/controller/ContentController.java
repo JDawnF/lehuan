@@ -12,7 +12,7 @@ import java.util.List;
  * @program: lehuan-parent
  * @description: 广告控制层
  * @author: baichen
- * @create: 2018-11-04 20:04
+ *  2018-11-04 20:04
  **/
 @RestController
 @RequestMapping("/content")

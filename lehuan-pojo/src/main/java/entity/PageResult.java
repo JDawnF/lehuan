@@ -7,7 +7,7 @@ import java.util.List;
  * @program: lehuan-parent
  * @description: 接收前端返回来的分页数据VO,分页结果类
  * @author: baichen
- * @create: 2018-10-01 10:27
+ *  2018-10-01 10:27
  **/
 public class PageResult implements Serializable {
     //    总记录数

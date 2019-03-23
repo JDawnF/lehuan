@@ -6,7 +6,7 @@ import java.io.Serializable;
  * @program: lehuan-parent
  * @description: 定义返回的执行结果封装实体
  * @author: baichen
- * @create: 2018-10-01 22:50
+ *  2018-10-01 22:50
  **/
 public class Result implements Serializable {
     private boolean success;    //是否成功

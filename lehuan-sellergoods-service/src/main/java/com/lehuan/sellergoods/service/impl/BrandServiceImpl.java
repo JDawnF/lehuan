@@ -19,7 +19,7 @@ import java.util.Map;
  * @program: lehuan-parent
  * @description: 商品品牌实现类
  * @author: baichen
- * @create: 2018-09-29 16:19
+ *  2018-09-29 16:19
  **/
 @Service
 @Transactional
