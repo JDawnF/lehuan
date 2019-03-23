@@ -17,6 +17,10 @@
         <module>lehuan-content-interface</module>
         <module>lehuan-content-service</module>
         <module>lehuan-portal-web</module>
+        <module>lehuan-solr-util</module>
+        <module>lehuan-search-interface</module>
+        <module>lehuan-search-service</module>
+        <module>lehuan-search-web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->
