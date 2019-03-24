@@ -225,14 +225,15 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 
     /**
      * 查询品牌和规格列表
-     *
      * @param category 商品分类名称
-     * @return
+     * @return  品牌和规格列表
      */
     private Map searchBrandAndSpecList(String category) {
         Map map = new HashMap();
-        //1.根据商品分类名称获取模板ID,key是在lehuan-sellergoods-service的ItemCatServiceImpl.java中存入的
+        //1.根据商品分类名称获取模板ID,从Redis中获取
+        // key是在lehuan-sellergoods-service的ItemCatServiceImpl.java中存入的
         Long templateId = (Long) redisTemplate.boundHashOps("itemCat").get(category);
+        // 如果模板ID不为空
         if (templateId != null) {
             //2.根据模板ID查询品牌列表
             List brandList = (List) redisTemplate.boundHashOps("brandList").get(templateId);

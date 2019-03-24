@@ -183,6 +183,7 @@
                 </div>
                 <div class="fl ext"></div>
             </div>
+            <!--品牌列表-->
             <div class="type-wrap logo"
                  ng-if="resultMap.brandList!=null && searchMap.brand==''&& keywordsIsBrand()==false">
                 <div class="fl key brand">品牌</div>
@@ -198,6 +199,7 @@
                     <a href="javascript:void(0);">更多</a>
                 </div>
             </div>
+            <!--规格参数-->
             <div class="type-wrap" ng-repeat="spec in resultMap.specList" ng-if="searchMap.spec[spec.text]==null">
                 <div class="fl key">{{spec.text}}</div>
                 <div class="fl value">

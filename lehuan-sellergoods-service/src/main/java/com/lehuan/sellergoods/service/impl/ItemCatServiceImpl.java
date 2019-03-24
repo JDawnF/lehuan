@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * 商品分类服务实现层
  *
- * @author Administrator
+ * @author baichen
  */
 @Service
 @Transactional
@@ -29,8 +29,8 @@ public class ItemCatServiceImpl implements ItemCatService {
 
     @Autowired
     private TbItemCatMapper itemCatMapper;
-//    @Autowired
-//    private RedisTemplate redisTemplate;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     /**
      * 查询全部
@@ -108,27 +108,27 @@ public class ItemCatServiceImpl implements ItemCatService {
     }
 
 
-    //    @Override
-//    public List<TbItemCat> findByParentId(Long parentId) {
-//        TbItemCatExample example = new TbItemCatExample();
-//        Criteria criteria = example.createCriteria();
-//        // 设置条件，等于parentId即可
-//        criteria.andParentIdEqualTo(parentId);
-//        // 条件查询
-//		//将模板ID放入缓存（以商品分类名称作为key）
-////     每次执行查询的时候，一次性读取缓存进行存储 (因为每次增删改都要执行此方法)
-//        List<TbItemCat> itemCatList = findAll();  //查询所有分类
-//        for (TbItemCat itemCat : itemCatList) {
-//            redisTemplate.boundHashOps("itemCat").put(itemCat.getName(), itemCat.getTypeId());
-//        }
-//        //System.out.println("将模板ID放入缓存");
-//        return itemCatMapper.selectByExample(example);
-//    }
+    /**
+     * 根据上级ID查询列表
+     * @param parentId     模板上级ID
+     * @return      商品分类列表
+     */
     @Override
     public List<TbItemCat> findByParentId(Long parentId) {
+        // 设置查询条件
         TbItemCatExample example = new TbItemCatExample();
         Criteria criteria = example.createCriteria();
+        // 等于parentId
         criteria.andParentIdEqualTo(parentId);
+        // 条件查询
+        //将模板ID放入缓存（以商品分类名称作为key）
+//     每次执行查询的时候，一次性读取缓存进行存储 (因为每次增删改都要执行此方法)
+        List<TbItemCat> itemCatList = findAll();  //查询所有分类
+        for (TbItemCat itemCat : itemCatList) {
+            //大key ：itemCat和小key：itemCat.getName()，值为模板ID
+            redisTemplate.boundHashOps("itemCat").put(itemCat.getName(), itemCat.getTypeId());
+        }
+        System.out.println("将模板ID放入缓存");
         return itemCatMapper.selectByExample(example);
     }
 }

@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * 服务实现层
  *
- * @author Administrator
+ * @author baichen
  */
 @Service
 @Transactional
@@ -37,8 +37,8 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
     //    规格选项
     @Autowired
     private TbSpecificationOptionMapper specificationOptionMapper;
-//    @Autowired
-//    private RedisTemplate redisTemplate;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     /**
      * 查询全部
@@ -123,7 +123,7 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
         Page<TbTypeTemplate> page = (Page<TbTypeTemplate>) typeTemplateMapper.selectByExample(example);
 
         //存入数据到缓存
-//        saveToRedis();
+        saveToRedis();
         return new PageResult(page.getTotal(), page.getResult());
     }
 
@@ -131,26 +131,33 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
     /**
      * 将品牌列表与规格列表放入缓存
      */
-//    private void saveToRedis() {
-//        List<TbTypeTemplate> templateList = findAll();    //查出所有模板数据
-//        //循环模板
-//        for (TbTypeTemplate template : templateList) {
-//            //得到品牌列表，模板ID：brandList，是一个json数据，转换为列表
-//            List brandList = JSON.parseArray(template.getBrandIds(), Map.class);
-//            redisTemplate.boundHashOps("brandList").put(template.getId(), brandList);
-//            //得到规格列表，需要根据规格ID查询规格选项
-//            List<Map> specList = findSpecList(template.getId());
-//            redisTemplate.boundHashOps("specList").put(template.getId(), specList);
-//
-//        }
-//        //System.out.println("缓存品牌列表");
-//    }
+    private void saveToRedis() {
+        // 查出所有模板数据
+        List<TbTypeTemplate> templateList = findAll();
+        //循环模板
+        for (TbTypeTemplate template : templateList) {
+            //得到品牌列表，模板ID：brandList，是一个json数据，转换为列表
+            List brandList = JSON.parseArray(template.getBrandIds(), Map.class);
+            // 存入Redis
+            redisTemplate.boundHashOps("brandList").put(template.getId(), brandList);
+            //得到规格列表，需要根据规格ID查询规格选项
+            List<Map> specList = findSpecList(template.getId());
+            redisTemplate.boundHashOps("specList").put(template.getId(), specList);
 
+        }
+        System.out.println("缓存品牌列表");
+    }
+
+    /**
+     * 根据规格ID查询规格选项
+     * @param id    规格ID
+     * @return      规格选项
+     */
     @Override
     public List<Map> findSpecList(Long id) {
         //根据ID查询到模板对象
         TbTypeTemplate typeTemplate = typeTemplateMapper.selectByPrimaryKey(id);
-        // 获得规格的数据spec_ids
+        // 获得规格的数据spec_ids,规格ID
         // [{"id":27,"text":"网络"},{"id":32,"text":"机身内存"}]
         String specIds = typeTemplate.getSpecIds();
         // 将specIds的字符串转成JSON的List<Map>
