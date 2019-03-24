@@ -242,6 +242,12 @@ public class GoodsServiceImpl implements GoodsService {
         }
     }
 
+    /**
+     * 根据SPU的商品ID和状态查询Item表信息,SKU列表
+     * @param goodsIds		SPU的ID集合
+     * @param status		商品状态
+     * @return				商品列表
+     */
     @Override
     public List<TbItem> findItemListByGoodsIdAndStatus(Long[] goodsIds, String status) {
         TbItemExample example=new TbItemExample();

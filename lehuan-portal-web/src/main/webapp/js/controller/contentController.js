@@ -11,7 +11,8 @@ app.controller('contentController',function($scope,contentService){
 		);		
 	}
 
-    //搜索跳转，用location传递参数到搜索页面searchController.js
+    //搜索跳转，用location传递参数到搜索页面searchController.js,AngularJS中需要用#接收参数
+	// 在首页搜索之后即可跳到搜索页
     $scope.search=function(){
         location.href="http://localhost:9104/search.html#?keywords="+$scope.keywords;
     }
