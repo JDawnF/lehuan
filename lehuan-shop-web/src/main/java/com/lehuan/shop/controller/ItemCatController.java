@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * 商品controller
- * @author Administrator
+ * @author baichen
  *
  */
 @RestController

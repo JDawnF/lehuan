@@ -12,7 +12,7 @@ import entity.PageResult;
 import entity.Result;
 /**
  * 商品controller
- * @author Administrator
+ * @author baichen
  *
  */
 @RestController

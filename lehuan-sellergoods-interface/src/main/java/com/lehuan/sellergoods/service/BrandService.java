@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * 商品品牌接口
- * @author Administrator
+ * @author baichen
  *
  */
 public interface BrandService {

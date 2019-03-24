@@ -10,7 +10,7 @@ import common.FastDFSClient;
 /**
  * 文件上传Controller
  *
- * @author Administrator
+ * @author baichen
  */
 @RestController
 public class UploadController {

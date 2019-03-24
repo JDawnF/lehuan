@@ -27,7 +27,7 @@ import javax.jms.Session;
 /**
  * controller
  *
- * @author Administrator
+ * @author baichen
  */
 @RestController
 @RequestMapping("/goods")

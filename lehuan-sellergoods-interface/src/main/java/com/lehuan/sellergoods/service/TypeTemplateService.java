@@ -7,7 +7,7 @@ import com.lehuan.pojo.TbTypeTemplate;
 import entity.PageResult;
 /**
  * 服务层接口
- * @author Administrator
+ * @author baichen
  *
  */
 public interface TypeTemplateService {

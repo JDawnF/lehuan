@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 规格组合实体类，规格和规格详细列表
- * @author Administrator
+ * @author baichen
  *
  */
 public class Specification implements Serializable{

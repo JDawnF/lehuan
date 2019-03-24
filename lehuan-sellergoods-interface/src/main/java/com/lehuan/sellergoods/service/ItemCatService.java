@@ -5,7 +5,7 @@ import com.lehuan.pojo.TbItemCat;
 import entity.PageResult;
 /**
  * 服务层接口
- * @author Administrator
+ * @author baichen
  *
  */
 public interface ItemCatService {

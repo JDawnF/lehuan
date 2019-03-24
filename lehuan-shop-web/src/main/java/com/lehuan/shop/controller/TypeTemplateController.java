@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * 商品类目模板分类controller
- * @author Administrator
+ * @author baichen
  *
  */
 @RestController

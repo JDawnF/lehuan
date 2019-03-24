@@ -18,7 +18,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 /**
  * 服务实现层
  *
- * @author Administrator
+ * @author baichen
  */
 @Service
 public class ContentServiceImpl implements ContentService {

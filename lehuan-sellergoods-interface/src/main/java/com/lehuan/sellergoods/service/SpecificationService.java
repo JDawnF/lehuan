@@ -8,7 +8,7 @@ import com.lehuan.pojo.TbSpecification;
 import entity.PageResult;
 /**
  * 服务层接口
- * @author Administrator
+ * @author baichen
  *
  */
 public interface SpecificationService {
