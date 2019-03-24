@@ -83,6 +83,7 @@
                                 <div class="input-append">
                                     <input type="text" id="autocomplete" ng-model="searchMap.keywords" type="text"
                                            class="input-error input-xxlarge"/>
+                                    <!--修改搜索按钮，调用搜索前将起始页码设置为1，即每次搜索都是从第一页增加条件搜索-->
                                     <button class="sui-btn btn-xlarge btn-danger" ng-click="searchMap.pageNo=1;search()"
                                             type="button">搜索
                                     </button>
@@ -148,7 +149,7 @@
 <!--list-content-->
 <div class="main">
     <div class="py-container">
-        <!--bread-->
+        <!--面包屑-->
         <div class="bread">
             <ul class="fl sui-breadcrumb">
                 <li>
@@ -156,6 +157,8 @@
                 </li>
             </ul>
             <ul class="tags-choose">
+                <!--增加各种搜索条件面包屑-->
+                <!--ng-if做判断，因为在js中已经初始化分类和品牌为空字符串了，所以这里就判断他们不为空的时候执行-->
                 <li class="tag" ng-if="searchMap.category!=''" ng-click="removeSearchItem('category')">
                     商品分类：{{searchMap.category}}<i class="sui-icon icon-tb-close"></i></li>
                 <li class="tag" ng-if="searchMap.brand!=''" ng-click="removeSearchItem('brand')">
@@ -171,7 +174,7 @@
         </div>
         <!--selector-->
         <div class="clearfix selector">
-            <!--分类列表如果为空则隐藏商品分类，否则则显示-->
+            <!--分类列表如果为空或者分类不为空则隐藏分类列表，否则则显示-->
             <div class="type-wrap" ng-if="resultMap.categoryList!=null&& searchMap.category==''">
                 <div class="fl key">商品分类</div>
                 <div class="fl value">
@@ -184,12 +187,16 @@
                 <div class="fl ext"></div>
             </div>
             <!--品牌列表-->
+            <!--品牌列表如果为空或者品牌不为空或者关键词是是品牌的时候则隐藏分类列表，否则则显示，
+            searchMap.brand==''，等于空说明还没有选择就要显示这个面板
+            keywordsIsBrand如果是关键字就不显示，等于false表示不是关键字才显示-->
             <div class="type-wrap logo"
                  ng-if="resultMap.brandList!=null && searchMap.brand==''&& keywordsIsBrand()==false">
                 <div class="fl key brand">品牌</div>
                 <div class="value logos">
                     <ul class="logo-list">
                         <li ng-repeat="brand in resultMap.brandList">
+                            <!--addSearchItem添加搜索项，这里是点击品牌的时候-->
                             <a href="#" ng-click="addSearchItem('brand',brand.text)">{{brand.text}}</a>
                         </li>
                     </ul>
@@ -199,7 +206,7 @@
                     <a href="javascript:void(0);">更多</a>
                 </div>
             </div>
-            <!--规格参数-->
+            <!--规格参数，ng-if="searchMap.spec[spec.text]==null"，为空则隐藏-->
             <div class="type-wrap" ng-repeat="spec in resultMap.specList" ng-if="searchMap.spec[spec.text]==null">
                 <div class="fl key">{{spec.text}}</div>
                 <div class="fl value">
@@ -212,10 +219,12 @@
                 </div>
                 <div class="fl ext"></div>
             </div>
+
             <div class="type-wrap" ng-if="searchMap.price==''">
                 <div class="fl key">价格</div>
                 <div class="fl value">
                     <ul class="type-list" ng-if="searchMap.price==''">
+                        <!--增加价格搜索选项-->
                         <li>
                             <a href="#" ng-click="addSearchItem('price','0-500')">0-500元</a>
                         </li>
@@ -270,6 +279,7 @@
                 <div class="navbar-inner filter">
                     <ul class="sui-nav">
                         <li class="active">
+                            <!--综合即默认，按原来的排序-->
                             <a href="#" ng-click="sortSearch('','')">综合</a>
                         </li>
                         <li>
@@ -328,19 +338,23 @@
             <div class="fr page">
                 <div class="sui-pagination pagination-large">
                     <ul>
+                        <!--'disabled'表示是白色,即可以点击的，isTopPage判断是否为第一页，如果是的话点击的样式不可用-->
                         <li class="prev {{isTopPage()?'disabled':''}}">
                             <a href="#" ng-click="queryByPage(searchMap.pageNo-1)">«</a>
                         </li>
+                        <!--页码前的省略号-->
                         <li class="dotted" ng-if="firstDot==true"><span>...</span></li>
                         <li ng-repeat="page in pageLabel">
                             <a href="#" ng-click="queryByPage(page)">{{page}}</a>
                         </li>
+                        <!--页码后的省略号-->
                         <li class="dotted" ng-if="lastDot==true"><span>...</span></li>
                         <li class="next {{isEndPage()?'disabled':''}}">
                             <a href="#" ng-click="queryByPage(searchMap.pageNo+1)">»</a>
                         </li>
                     </ul>
                     <div><span>共{{resultMap.totalPages}}页&nbsp;</span>
+                        <!--绑定当前页searchMap.pageNo，传到后端会变成字符串，后端的方法参数是整型，所以要在js中转换为整型-->
                         <span>到第<input type="text" class="page-num" ng-model="searchMap.pageNo">页
                         <button class="page-confirm" ng-click="queryByPage(searchMap.pageNo)">确定</button></span>
                     </div>

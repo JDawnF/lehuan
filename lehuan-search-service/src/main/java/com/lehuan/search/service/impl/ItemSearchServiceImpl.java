@@ -42,6 +42,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
     @Override
     public Map search(Map searchMap) {
         Map map = new HashMap();
+//        因为用户可能会习惯性输入空格，输入空格可能会查询不到结果，所以这里要处理空格，将空格去掉
         //获取关键字，然后去掉空格
         String keywords = (String) searchMap.get("keywords");
         searchMap.put("keywords", keywords.replace(" ", "")); //关键字去掉空格
@@ -52,9 +53,9 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         map.put("categoryList", categoryList);
         //3.查询品牌和规格列表
         String categoryName = (String) searchMap.get("category");
-        if (!categoryName.equals("")) {
+        if (!"".equals(categoryName)) { //如果有分类名称，则根据分类名称查询品牌和规格参数
             map.putAll(searchBrandAndSpecList(categoryName));
-        } else {
+        } else {    // 如果分类名称为空，当分类列表大于0时，根据分类列表中的第一个分类查询品牌和规格参数
             if (categoryList.size() > 0) {
                 map.putAll(searchBrandAndSpecList(categoryList.get(0)));
             }
@@ -87,13 +88,14 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         query.addCriteria(criteria);
         //ScoredPage<TbItem> page = solrTemplate.queryForPage(query, TbItem.class);
 
-        //1.2 按照商品分类过滤，根据前端页面的点击分类进行过滤查询
-        if (!"".equals(searchMap.get("category"))) {
+        //1.2 按照商品分类过滤，根据前端页面的点击,进行分类进行过滤查询
+        if (!"".equals(searchMap.get("category"))) {    // 如果商品分类为空
+            // 拼接过滤查询的条件
             FilterQuery filterQuery = new SimpleFilterQuery();
 //        searchMap.get的key是controllerJs中传过来的key一样
             Criteria filterCriteria = new Criteria("item_category").is(searchMap.get("category"));
             filterQuery.addCriteria(filterCriteria);
-            query.addFilterQuery(filterQuery);
+            query.addFilterQuery(filterQuery);  // 添加过滤查询
         }
 
         //1.3 按照品牌分类过滤，根据前端页面的点击分类进行过滤查询
@@ -109,7 +111,8 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         if (searchMap.get("spec") != null) {
             Map<String, String> specMap = (Map<String, String>) searchMap.get("spec");
             for (String key : specMap.keySet()) {
-//        searchMap.get的key是controllerJs中传过来的key一样
+//        searchMap.get的key是controllerJs中传过来的key一样，表示前端页面所选择的值
+//        规格参数是一个动态域，需要拼接,获取规格map中的key
                 Criteria filterCriteria = new Criteria("item_spec_" + key).is(specMap.get(key));
                 FilterQuery filterQuery = new SimpleFilterQuery(filterCriteria);
                 query.addFilterQuery(filterQuery);
@@ -121,15 +124,15 @@ public class ItemSearchServiceImpl implements ItemSearchService {
             //String priceStr = (String) searchMap.get("price");
             //分割前端传过来的价格区间
             String[] price = ((String) searchMap.get("price")).split("-");
-            //如果最低价格不等于0，前端传过来的值都是"0-500","500-1000"，先分割
-            if (!price[0].equals("0")) {
+            //如果最低价格不等于0，前端传过来的值都是"0-500","500-1000"，先分割成一个个数字字符串,比较最大和最小值
+            if (!price[0].equals("0")) {    // 如果选中了价格为“0”的条件
                 FilterQuery filterQuery = new SimpleFilterQuery();
 //        searchMap.get的key是controllerJs中传过来的key一样
                 Criteria filterCriteria = new Criteria("item_price").greaterThanEqual(price[0]);
                 filterQuery.addCriteria(filterCriteria);
                 query.addFilterQuery(filterQuery);
             }
-            //如果最高价格不等于*,"3000-*"前端封装的值
+            //如果最高价格不等于*,"3000-*"是前端封装的值
             if (!price[1].equals("*")) {
                 Criteria filterCriteria = new Criteria("item_price").lessThanEqual(price[1]);
                 FilterQuery filterQuery = new SimpleFilterQuery(filterCriteria);
@@ -143,28 +146,28 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         if (pageNo == null) {
             pageNo = 1;
         }
-        Integer pageSize = (Integer) searchMap.get("pageSize");
+        //如果前端没有传过来pageSize这个参数，则默认是20条
+        Integer pageSize = (Integer) searchMap.get("pageSize"); //每页记录数
         if (pageSize == null) {
             pageSize = 20;
         }
-        query.setOffset((pageNo - 1) * pageSize);   //起始索引
+        query.setOffset((pageNo - 1) * pageSize);   //起始索引,从第几条记录查询,起始索引
         query.setRows(pageSize);        //每页记录数
 
         //1.7排序，升序和降序
-        String sortValue = (String) searchMap.get("sort");
-        String sortField = (String) searchMap.get("sortField");
+        String sortValue = (String) searchMap.get("sort");      //升序ASC，降序DESC
+        String sortField = (String) searchMap.get("sortField");     //排序字段
         if (sortValue != null && !sortField.equals("")) {
-            if (sortValue.equals("ASC")) {
+            if (sortValue.equals("ASC")) {      //升序
                 //拼接搜索字段，item+sortField，sortField是前端传给后端的值
                 Sort sort = new Sort(Sort.Direction.ASC, "item_" + sortField);
                 query.addSort(sort);
             }
-            if (sortValue.equals("DESC")) {
+            if (sortValue.equals("DESC")) {     // 降序
                 Sort sort = new Sort(Sort.Direction.DESC, "item_" + sortField);
                 query.addSort(sort);
             }
         }
-
 
         /**
          * 获取高亮结果集
@@ -245,15 +248,24 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         return map;
     }
 
+    /**
+     * 批量导入数据到solr索引库
+     * @param list  需要导入的数据列表
+     */
     @Override
     public void importList(List list) {
         solrTemplate.saveBeans(list);
         solrTemplate.commit();
     }
 
+    /**
+     * 删除数据,SPU的id
+     * @param goodsIdList   商品id集合
+     */
     @Override
     public void deleteByGoodsIds(List goodsIdList) {
         Query query = new SimpleQuery();
+        //用in就不用循环id集合
         Criteria criteria = new Criteria("item_goodsid").in(goodsIdList);
         query.addCriteria(criteria);
         solrTemplate.delete(query);

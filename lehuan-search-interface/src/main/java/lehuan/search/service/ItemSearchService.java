@@ -12,14 +12,14 @@ public interface ItemSearchService {
     public Map search(Map searchMap);
 
     /**
-     * 导入数据
-     * @param list
+     * 批量导入数据到solr索引库
+     * @param list  需要导入的数据列表
      */
     public void importList(List list);
 
     /**
      * 删除数据,SPU的id
-     * @param goodsIdList
+     * @param goodsIdList   商品id集合
      */
     public void deleteByGoodsIds(List goodsIdList);
 
