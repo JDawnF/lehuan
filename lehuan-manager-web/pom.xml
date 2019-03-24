@@ -108,6 +108,12 @@
             <artifactId>lehuan-content-interface</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.lehuan</groupId>
+            <artifactId>lehuan-search-interface</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
         <!--<dependency>-->
         <!--<groupId>com.lehuanroupId>-->
         <!--<artifactId>lehuan-page-interface</artifactId>-->
