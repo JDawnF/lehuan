@@ -21,6 +21,9 @@
         <module>lehuan-search-interface</module>
         <module>lehuan-search-service</module>
         <module>lehuan-search-web</module>
+        <module>lehuan-page-interface</module>
+        <module>lehuan-page-service</module>
+        <module>lehuan-page-web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->
