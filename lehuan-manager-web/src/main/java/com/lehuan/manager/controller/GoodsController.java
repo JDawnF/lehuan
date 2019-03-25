@@ -6,6 +6,7 @@ import java.util.List;
 import com.alibaba.fastjson.JSON;
 import com.lehuan.group.Goods;
 //import com.lehuan.page.service.ItemPageService;
+import com.lehuan.page.service.ItemPageService;
 import com.lehuan.pojo.TbItem;
 import com.lehuan.search.service.ItemSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +40,8 @@ public class GoodsController {
     private GoodsService goodsService;
     @Reference(timeout = 100000)
     private ItemSearchService itemSearchService;
-//    @Reference(timeout = 40000)
-//    private ItemPageService itemPageService;
+    @Reference(timeout = 40000)
+    private ItemPageService itemPageService;
 //    @Autowired
 //    private JmsTemplate jmsTemplate;
 //    @Autowired
@@ -184,40 +185,16 @@ public class GoodsController {
                 } else {
                     System.out.println("没有明细数据");
                 }
+                //静态页生成
+                for (Long goodsId : ids) {
+                    itemPageService.genItemHtml(goodsId);
+                }
             }
             return new Result(true, "修改状态成功");
         } catch (Exception e) {
             e.printStackTrace();
             return new Result(false, "修改状态失败");
         }
-//                    // itemSearchService.importList(itemList);
-//                    //转化为json字符串才可以用textMessage
-//                    final String jsonString = JSON.toJSONString(itemList);
-//                    //消息队列
-//                    jmsTemplate.send(queueSolrDestination, new MessageCreator() {
-//                        @Override
-//                        public Message createMessage(Session session) throws JMSException {
-//                            return session.createTextMessage(jsonString);
-//                        }
-//                    });
-//                    // 生成商品详情页
-//                   for (final Long goodsId:ids){
-//                      // itemPageService.genItemHtml(goodsId);
-//                       jmsTemplate.send(topicPageDestination, new MessageCreator() {
-//                           @Override
-//                           public Message createMessage(Session session) throws JMSException {
-//                               return session.createTextMessage(goodsId+"");
-//                           }
-//                       });
-//                   }
-//                } else {
-//                    System.out.println("没有明细数据");
-//                }
-//            return new Result(true, "修改状态成功");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return new Result(false, "修改状态失败");
-//        }
     }
 
     /**
@@ -227,7 +204,7 @@ public class GoodsController {
      */
     @RequestMapping("/genHtml")
     public void genHtml(Long goodsId) {
-        //itemPageService.genItemHtml(goodsId);
+        itemPageService.genItemHtml(goodsId);
     }
 
 }
