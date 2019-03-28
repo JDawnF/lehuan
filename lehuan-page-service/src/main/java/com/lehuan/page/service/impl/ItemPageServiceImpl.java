@@ -1,5 +1,6 @@
 package com.lehuan.page.service.impl;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
 import java.util.HashMap;
@@ -8,9 +9,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
-
-import com.alibaba.dubbo.config.annotation.Service;
 import com.lehuan.mapper.TbGoodsDescMapper;
 import com.lehuan.mapper.TbGoodsMapper;
 import com.lehuan.mapper.TbItemCatMapper;
@@ -30,28 +30,20 @@ public class ItemPageServiceImpl implements ItemPageService {
 
     @Autowired
     private FreeMarkerConfigurer freeMarkerConfigurer;
-
     @Value("${pageDir}")
     private String pageDir;
-
-
     @Autowired
     private TbGoodsMapper goodsMapper;
-
     @Autowired
     private TbGoodsDescMapper goodsDescMapper;
-
     @Autowired
     private TbItemCatMapper itemCatMapper;
-
     @Autowired
     private TbItemMapper itemMapper;
 
     @Override
     public boolean genItemHtml(Long goodsId) {
-
         Configuration configuration = freeMarkerConfigurer.getConfiguration();
-
         try {
             Template template = configuration.getTemplate("item.ftl");
             //创建数据模型，需要从数据库拿
@@ -94,7 +86,16 @@ public class ItemPageServiceImpl implements ItemPageService {
 
     @Override
     public boolean deleteItemHtml(Long[] goodsIds) {
-        return false;
+        try {
+            for (Long goodsId : goodsIds) {
+                new File(pageDir + goodsId + ".html").delete();
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
+
 
 }
