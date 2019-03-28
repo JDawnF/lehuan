@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amq="http://activemq.apache.org/schema/core"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context   
+		http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--连接工厂，真正可以产生Connection的ConnectionFactory，由对应的 JMS服务厂商提供-->
+    <bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://192.168.98.135:61616"/>
+    </bean>
+
+    <!-- Spring用于管理真正的ConnectionFactory的ConnectionFactory，单例连接工厂-->
+    <bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+        <!-- 目标ConnectionFactory对应真实的可以产生JMS Connection的ConnectionFactory -->
+        <property name="targetConnectionFactory" ref="targetConnectionFactory"/>
+    </bean>
+
+    <!-- Spring提供的JMS工具类，它可以进行消息发送、接收等 -->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->
+        <property name="connectionFactory" ref="connectionFactory"/>
+    </bean>
+    <!--这个是队列目的地，点对点的  文本信息-->
+    <bean id="queueSolrDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <!--运营商执行商品审核后，向activeMQ发送消息（SKU列表），搜索服务从activeMQ接收到消息
+        并导入到solr索引库。由同步调用变成异步调用，点对点模式，一次导入即可-->
+        <constructor-arg value="lehuan_queue_solr"/>
+    </bean>
+
+    <!--这个是队列目的地，点对点-->
+    <bean id="queueSolrDeleteDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="lehuan_queue_solr_delete"/>
+    </bean>
+
+    <!--这个是点对点的  文本信息-->
+    <bean id="topicPageDestination" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg value="lehuan_topic_page"/>
+    </bean>
+    <!--这个是订阅模式  用于删除页面-->
+    <bean id="topicPageDeleteDestination" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg value="lehuan_topic_page_delete"/>
+    </bean>
+
+
+</beans>
