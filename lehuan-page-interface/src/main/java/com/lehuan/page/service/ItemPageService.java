@@ -2,7 +2,7 @@ package com.lehuan.page.service;
 
 /**
  * 商品详细页接口
- * @author Administrator
+ * @author baichen
  *
  */
 public interface ItemPageService {
