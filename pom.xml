@@ -24,6 +24,9 @@
         <module>lehuan-page-interface</module>
         <module>lehuan-page-service</module>
         <module>lehuan-page-web</module>
+        <module>lehuan-user-interface</module>
+        <module>lehuan-user-service</module>
+        <module>lehuan-user-web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->
