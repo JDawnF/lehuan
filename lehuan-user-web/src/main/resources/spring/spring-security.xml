@@ -11,6 +11,7 @@
     <http pattern="/image/**" security="none"></http>
     <http pattern="/plugins/**" security="none"></http>
     <http pattern="/register.html" security="none"></http>
+    <!--//登录和发送验证码要放行-->
     <http pattern="/user/add.do" security="none"></http>
     <http pattern="/user/sendCode.do" security="none"></http>
 
@@ -31,12 +32,12 @@
         <beans:property name="loginUrl" value="http://192.168.98.135:9100/cas/login"/>
         <beans:property name="serviceProperties" ref="serviceProperties"/>
     </beans:bean>
+    <!--设置服务地址属性，修改地址-->
     <beans:bean id="serviceProperties" class="org.springframework.security.cas.ServiceProperties">
         <!--service 配置自身工程的根地址+/login/cas   -->
         <beans:property name="service" value="http://localhost:9106/login/cas"/>
     </beans:bean>
     <!-- CAS入口点 结束 -->
-
 
     <!-- 认证过滤器 开始 -->
     <beans:bean id="casAuthenticationFilter" class="org.springframework.security.cas.web.CasAuthenticationFilter">
@@ -75,6 +76,7 @@
     <!-- 经过此配置，当用户在地址栏输入本地工程 /logout/cas  -->
     <beans:bean id="requestSingleLogoutFilter"
                 class="org.springframework.security.web.authentication.logout.LogoutFilter">
+        <!--设置退出登录后的跳转地址,跳到首页,service表示前面的url执行后跳转到的url-->
         <beans:constructor-arg value="http://192.168.98.135:9100/cas/logout?service=http://localhost:9103"/>
         <beans:constructor-arg>
             <beans:bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>

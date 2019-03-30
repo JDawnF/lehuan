@@ -18,6 +18,7 @@ import java.util.Map;
 public class LoginController {
     @RequestMapping("/name")
     public Map showName() {
+        //得到登陆用户名
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         Map map = new HashMap<>();
         map.put("loginName", name);
