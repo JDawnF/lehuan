@@ -9,15 +9,12 @@ import java.net.URLEncoder;
 
 
 /**
- * 
  * Cookie 工具类
- *
  */
 public final class CookieUtil {
 
     /**
      * 得到Cookie的值, 不编码
-     * 
      * @param request
      * @param cookieName
      * @return
@@ -27,8 +24,7 @@ public final class CookieUtil {
     }
 
     /**
-     * 得到Cookie的值,
-     * 
+     * 得到Cookie的值
      * @param request
      * @param cookieName
      * @return
@@ -56,11 +52,12 @@ public final class CookieUtil {
         return retValue;
     }
 
+
     /**
-     * 得到Cookie的值,
-     * 
+     * 得到cookie的值
      * @param request
      * @param cookieName
+     * @param encodeString
      * @return
      */
     public static String getCookieValue(HttpServletRequest request, String cookieName, String encodeString) {
@@ -132,7 +129,6 @@ public final class CookieUtil {
 
     /**
      * 设置Cookie的值，并使其在指定时间内生效
-     * 
      * @param cookieMaxage cookie生效的最大秒数
      */
     private static final void doSetCookie(HttpServletRequest request, HttpServletResponse response,
@@ -146,7 +142,7 @@ public final class CookieUtil {
             Cookie cookie = new Cookie(cookieName, cookieValue);
             if (cookieMaxage > 0)
                 cookie.setMaxAge(cookieMaxage);
-            if (null != request) {// 设置域名的cookie
+            if (null != request) {  // 设置域名的cookie
             	String domainName = getDomainName(request);
             	System.out.println(domainName);
                 if (!"localhost".equals(domainName)) {
@@ -162,7 +158,6 @@ public final class CookieUtil {
 
     /**
      * 设置Cookie的值，并使其在指定时间内生效
-     * 
      * @param cookieMaxage cookie生效的最大秒数
      */
     private static final void doSetCookie(HttpServletRequest request, HttpServletResponse response,

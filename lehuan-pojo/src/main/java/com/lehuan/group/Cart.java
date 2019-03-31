@@ -7,14 +7,14 @@ import java.util.List;
 
 /**
  * @program: lehuan-parent
- * @description: 购物车实体类,对每个商家的购物车进行的封装
+ * @description: 购物车实体类, 对每个商家的购物车进行的封装,属性是商家相关的信息和订单
  * @author: baichen
- *  2018-12-11 21:02
  **/
 public class Cart implements Serializable {
     private String sellerId;//商家ID
     private String sellerName;//商家名称
     private List<TbOrderItem> orderItemList;//购物车明细
+
     public String getSellerId() {
         return sellerId;
     }
