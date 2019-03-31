@@ -27,6 +27,9 @@
         <module>lehuan-user-interface</module>
         <module>lehuan-user-service</module>
         <module>lehuan-user-web</module>
+        <module>lehuan-cart-interface</module>
+        <module>lehuan-cart-service</module>
+        <module>lehuan-cart-web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->
