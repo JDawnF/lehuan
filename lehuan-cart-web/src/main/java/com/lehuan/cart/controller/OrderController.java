@@ -13,7 +13,7 @@ import entity.PageResult;
 import entity.Result;
 /**
  * controller
- * @author Administrator
+ * @author baichen
  *
  */
 @RestController
@@ -43,18 +43,17 @@ public class OrderController {
 	}
 	
 	/**
-	 * 增加
+	 * 增加订单
 	 * @param order
 	 * @return
+	 * 订单来源不同，要区分不同的添加方法，因为获取用户的方法可能是不同的
 	 */
 	@RequestMapping("/add")
 	public Result add(@RequestBody TbOrder order){
-		
 		//获取当前登录人账号
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		order.setUserId(username);		//存入后传到service层
 		order.setSourceType("2");//订单来源  PC
-		
 		try {
 			orderService.add(order);
 			return new Result(true, "增加订单成功");

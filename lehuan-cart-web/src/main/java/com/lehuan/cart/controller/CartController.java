@@ -74,10 +74,13 @@ public class CartController {
      * @return            添加结果
      */
     @RequestMapping("/addGoodsToCartList")
+    // 实现跨域请求
     @CrossOrigin(origins = "http://localhost:9105", allowCredentials = "true")
     public Result addGoodsToCartList(Long itemId, Integer num) {
         //跨域请求，springMVC4.2后跨域用上面的注解
+        //可以访问的域(此方法不允许操作cookie，如果需要操作cookie，需要加下面的那句话)
 //        response.setHeader("Access-Control-Allow-Origin", "http://localhost:9105");
+        //允许操作cookie，如果操作cookie，上面那句话的ip地址不能用*
 //        response.setHeader("Access-Control-Allow-Credentials", "true");
         //得到登陆人账号,判断当前是否有人登陆
         String username = SecurityContextHolder.getContext().getAuthentication().getName();

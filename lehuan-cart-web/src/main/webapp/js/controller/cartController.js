@@ -22,11 +22,12 @@ app.controller('cartController', function ($scope, cartService) {
         );
     }
 
-    //获取当前登录账号的收货地址列表
+    //根据用户名，获取当前登录账号用户的收货地址列表
     $scope.findAddressList = function () {
         cartService.findAddressList().success(
             function (response) {
-                $scope.addressList = response;
+                $scope.addressList = response;  // 得到用户地址列表
+                // 设置默认地址,1是数据库中设定的值，表示默认地址
                 for (var i = 0; i < $scope.addressList.length; i++) {
                     if ($scope.addressList[i].isDefault == '1') {
                         $scope.address = $scope.addressList[i];
@@ -37,11 +38,11 @@ app.controller('cartController', function ($scope, cartService) {
         );
     }
 
-    //选择地址
+    // 选择地址
     $scope.selectAddress = function (address) {
         $scope.address = address;
     }
-    //判断是否是当前选中的地址
+    // 判断是否是当前选中的地址
     $scope.isSelectedAddress = function (address) {
         if (address == $scope.address) {
             return true;
@@ -50,13 +51,17 @@ app.controller('cartController', function ($scope, cartService) {
         }
     }
     //默认付款方式为1，表示微信付款
+    //paymentType是order表里面的一个字段，设置默认值为1
     $scope.order = {paymentType: '1'}
-    //选择支付方式
+    //选择支付方式,用户选中传递type
     $scope.selectPayType = function (type) {
         $scope.order.paymentType = type;
     }
     //保存订单
+    // 这里的order是js的service层传递过来的对象，将address对象的值对order对象进行
+    // 重新赋值，order的属性是根据数据库的字段进行去掉下划线，然后变成大写拼接而成,这样可以对应数据库的字段
     $scope.submitOrder = function () {
+        // 根据地址表对订单地址相关信息进行赋值
         $scope.order.receiverAreaName = $scope.address.address;//地址
         $scope.order.receiverMobile = $scope.address.mobile;//手机
         $scope.order.receiver = $scope.address.contact;//联系人

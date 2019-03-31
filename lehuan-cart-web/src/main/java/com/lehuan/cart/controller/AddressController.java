@@ -13,7 +13,7 @@ import entity.PageResult;
 import entity.Result;
 /**
  * controller
- * @author Administrator
+ * @author baichen
  *
  */
 @RestController
@@ -113,9 +113,12 @@ public class AddressController {
 	}
 
 
+	/**根据登录用户查询地址列表
+	 * @return	地址列表
+	 */
 	@RequestMapping("/findListByLoginUser")
 	public List<TbAddress> findListByLoginUser(){
-		//获取登陆用户
+		// 先获取登陆用户
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		return addressService.findListByUserId(username);
 	}

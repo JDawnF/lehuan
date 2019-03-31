@@ -70,11 +70,15 @@
                 <div class="addressInfo">
                     <ul class="addr-detail">
                         <li class="addr-item">
+                            <!--addressList是cartController.js中findAddressList方法返回的接收值-->
                             <div ng-repeat="address in addressList">
+                                <!--判断是否是当前选中的地址-->
                                 <div class="con name {{isSelectedAddress(address)?'selected':''}}">
+                                    <!--选择地址-->
                                     <a href="javascript:;" ng-click="selectAddress(address)">{{address.contact}}<span
                                             title="点击取消选择">&nbsp;</a>
                                 </div>
+                                <!--address的属性时数据库中的字段-->
                                 <div class="con address">{{address.address}}<span>{{address.mobile}}</span>
                                     <span class="base" ng-if="address.isDefault=='1'">默认地址</span>
                                     <span class="edittext"><a data-toggle="modal" data-target=".edit"
@@ -159,6 +163,7 @@
                 </div>
                 <div class="step-cont">
                     <ul class="payType">
+                        <!--页面调用付款方式-->
                         <li class="selected" ng-click="selectPayType('1')">微信付款<span title="点击取消选择"></span></li>
                         <li ng-click="selectPayType('2')">货到付款<span title="点击取消选择"></span></li>
                     </ul>

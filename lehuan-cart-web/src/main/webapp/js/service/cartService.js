@@ -24,11 +24,11 @@ app.service('cartService', function ($http) {
         return totalValue;
     }
 
-    //获取当前登录账号的收货地址列表
+    //  根据用户名，获取当前登录账号用户的收货地址列表
     this.findAddressList = function () {
         return $http.get('address/findListByLoginUser.do');
     }
-    //保存订单
+    //保存订单，传的是一个对象，所以要用post
     this.submitOrder = function (order) {
         return $http.post('order/add.do', order);
     }
