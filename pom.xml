@@ -30,6 +30,8 @@
         <module>lehuan-cart-interface</module>
         <module>lehuan-cart-service</module>
         <module>lehuan-cart-web</module>
+        <module>lehuan-order-interface</module>
+        <module>lehuan-order-service</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->
