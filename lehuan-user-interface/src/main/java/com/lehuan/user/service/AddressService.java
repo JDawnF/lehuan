@@ -4,40 +4,40 @@ import com.lehuan.pojo.TbAddress;
 
 import entity.PageResult;
 /**
- * 服务层接口
+ * 地址服务层接口
  * @author baichen
  *
  */
 public interface AddressService {
 
 	/**
-	 * 返回全部列表
+	 * 返回所有地址列表
 	 * @return
 	 */
 	public List<TbAddress> findAll();
 	
 	
 	/**
-	 * 返回分页列表
+	 * 返回所有地址分页列表
 	 * @return
 	 */
 	public PageResult findPage(int pageNum, int pageSize);
 	
 	
 	/**
-	 * 增加
+	 * 增加地址
 	*/
 	public void add(TbAddress address);
 	
 	
 	/**
-	 * 修改
+	 * 修改地址
 	 */
 	public void update(TbAddress address);
 	
 
 	/**
-	 * 根据ID获取实体
+	 * 根据ID获取地址实体
 	 * @param id
 	 * @return
 	 */

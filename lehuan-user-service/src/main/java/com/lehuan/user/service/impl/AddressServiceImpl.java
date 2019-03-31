@@ -124,12 +124,17 @@ public class AddressServiceImpl implements AddressService {
 		return new PageResult(page.getTotal(), page.getResult());
 	}
 
+	/**
+	 * 通过用户ID找到地址列表
+	 * @param userId	用户ID
+	 * @return			地址列表
+	 */
 	@Override
 	public List<TbAddress> findListByUserId(String userId) {
 		//条件查询
 		TbAddressExample example=new TbAddressExample();
 		Criteria criteria = example.createCriteria();
-		criteria.andUserIdEqualTo(userId);
+		criteria.andUserIdEqualTo(userId);	// 添加条件，等于用户地址
 		return addressMapper.selectByExample(example);
 	}
 	
