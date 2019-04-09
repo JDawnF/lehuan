@@ -67,10 +67,7 @@
     </beans:bean>
     <!-- 认证类 -->
     <beans:bean id="userDetailsService" class="com.lehuan.user.service.UserDetailServiceImpl"/>
-
     <!-- 认证过滤器 结束 -->
-
-
     <!-- 单点登出  开始  -->
     <beans:bean id="singleLogoutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter"/>
     <!-- 经过此配置，当用户在地址栏输入本地工程 /logout/cas  -->
