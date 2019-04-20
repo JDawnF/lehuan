@@ -30,10 +30,6 @@
 					</li>
 				</ul>
 				<div class="tab-content tab-wraped">
-					<div id="index" class="tab-pane">
-						<p>二维码登录，暂为官网二维码</p>
-						<img src="../img/wx_cz.jpg" />
-					</div>
 					<div id="profile" class="tab-pane  active">
 						<form class="sui-form" action="/login" method="post" id="loginform">
 							<div class="input-prepend"><span class="add-on loginname"></span>
@@ -42,12 +38,12 @@
 							<div class="input-prepend"><span class="add-on loginpwd"></span>
 								<input id="prependedInput" type="password" name="password" placeholder="请输入密码" class="span2 input-xfat">
 							</div>
-							<div class="setting">
-								 <div id="slider">
-									<div id="slider_bg"></div>
-									<span id="label">>></span> <span id="labelTip">拖动滑块验证</span>
-									</div>
-							</div>
+							<!--<div class="setting">-->
+								 <!--<div id="slider">-->
+									<!--<div id="slider_bg"></div>-->
+									<!--<span id="label">>></span> <span id="labelTip">拖动滑块验证</span>-->
+									<!--</div>-->
+							<!--</div>-->
 							<div class="logined">
 								<!--loginform.submit()提交这个id-->
 								<a class="sui-btn btn-block btn-xlarge btn-danger" onclick="document:loginform.submit()" target="_blank">登&nbsp;&nbsp;录</a>
@@ -74,7 +70,7 @@
 			<li>销售联盟</li>
 			<li>乐换社区</li>
 		</ul>
-		<div class="address">地址：广东省广州市天河区中山大道西293号 邮编：100096 电话：400-618-4000 传真：010-82935100</div>
+		<div class="address">地址：广东省广州市天河区中山大道西293号 邮编：510000   电话：020-12345678</div>
 		<div class="beian">粤ICP备19020121号粤公网安备100210296242
 		</div>
 	</div>
@@ -84,17 +80,18 @@
 <script type="text/javascript" src="js/plugins/sui/sui.min.js"></script>
 <script type="text/javascript" src="js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
 <script src="js/pages/jquery.slideunlock.js"></script>
-<script>
-	$(function(){
-		var slider = new SliderUnlock("#slider",{
-				successLabelTip : "欢迎访问乐换"
-			},function(){
-				// alert("验证成功,即将跳转至首页");
-            	// window.location.href="index.html"
-        	});
-        slider.init();
-	})
-	</script>
+	<!--拉动验证-->
+<!--<script>-->
+	<!--$(function(){-->
+		<!--var slider = new SliderUnlock("#slider",{-->
+				<!--successLabelTip : "欢迎访问乐换"-->
+			<!--},function(){-->
+				<!--// alert("验证成功,即将跳转至首页");-->
+            	<!--// window.location.href="index.html"-->
+        	<!--});-->
+        <!--slider.init();-->
+	<!--})-->
+	<!--</script>-->
 </body>
 
 </html>

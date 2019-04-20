@@ -23,7 +23,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private SellerService sellerService;
 
     public void setSellerService(SellerService sellerService) {
-        System.out.println("进入了setSellerService方法");
         this.sellerService = sellerService;
     }
 

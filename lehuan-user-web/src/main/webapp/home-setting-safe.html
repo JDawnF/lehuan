@@ -102,7 +102,7 @@
                         <ul class="nav">
                             <li class="f-item">服装城</li>
                             <li class="f-item">美妆馆</li>
-                            <li class="f-item">品优超市</li>
+                            <li class="f-item">乐换超市</li>
                             <li class="f-item">全球购</li>
                             <li class="f-item">闪购</li>
                             <li class="f-item">团购</li>
@@ -212,11 +212,11 @@
     }, "不能超过120岁");
     ///// 20-60   /^([2-5]\d)|60$/
 
-    //传真
+    // 电话
     jQuery.validator.addMethod("fax", function (value, element) {
         var fax = /^(\d{3,4})?[-]?\d{7,8}$/;
         return this.optional(element) || (fax.test(value));
-    }, "传真格式如：0371-68787027");
+    }, " 电话格式如：0371-68787027");
 
     //验证当前值和目标val的值相等 相等返回为 false
     jQuery.validator.addMethod("equalTo2", function (value, element) {
@@ -534,7 +534,7 @@
                     <li>友情链接<span class="space"></span></li>
                     <li>关于我们</li>
                 </ul>
-                <p>地址：广东省广州市天河区中山大道西293号 邮编：100096 电话：400-618-4000 传真：010-82935100</p>
+                <p>地址：广东省广州市天河区中山大道西293号 邮编：510000   电话：020-12345678</p>
                 <p>粤ICP备19020121号粤公网安备100210296242</p>
             </div>
         </div>
