@@ -168,7 +168,7 @@ ul.brand-list li {
 }
 
 .header {
-    border-bottom: 2px solid #b1191a
+    border-bottom: 2px solid #3a0ade
 }
 
 .logo-bd {
@@ -179,16 +179,6 @@ ul.brand-list li {
     margin: 25px auto
 }
 
-.searchArea .hotwords {
-    width: 570px;
-    margin: 0 auto;
-    overflow: hidden
-}
-
-.searchArea .hotwords ul {
-    overflow: hidden
-}
-
 .searchArea .search {
     width: 570px;
     margin: 30px auto -10px
@@ -197,24 +187,16 @@ ul.brand-list li {
 .search .input-append .input-error {
     border-radius: 0;
     padding: 5px;
-    border: 2px solid #c81523 !important
+    border: 2px solid #4bde44 !important
 }
 
 .search .input-append .btn-danger {
     border-radius: 0;
-    border-color: #c81523;
-    background: #c81523;
+    border-color: #4bde44;
+    background: #4bde44;
     font-family: "微软雅黑";
     line-height: 22px;
     height: 32px
-}
-
-.hotwords ul li {
-    padding: 5px 25px 0 0
-}
-
-.hotwords ul li:first-child {
-    color: red
 }
 
 .shopArea .shopcar {
@@ -254,7 +236,7 @@ ul.brand-list li {
 
 .shopnum {
     position: absolute;
-    background: #c81623;
+    background: #4bde44;
     color: #fff;
     padding: 4px;
     border-radius: 6px;
@@ -266,7 +248,7 @@ ul.brand-list li {
 }
 
 .NavList .all-sort {
-    background: #b1191a;
+    background: #16da1ce0;
     color: #fff;
     text-align: center
 }
@@ -276,7 +258,7 @@ ul.brand-list li {
 }
 
 .SortList .all-sort-list {
-    background: #c81623
+    background: #4bde44
 }
 
 .navArea ul.nav li {

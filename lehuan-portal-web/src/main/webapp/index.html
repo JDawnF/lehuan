@@ -31,8 +31,9 @@
                 <div class="shortcut">
                     <ul class="fl">
                         <li class="f-item">乐换欢迎您！</li>
-                        <li class="f-item">请<a href="http://localhost:9106/cas/login" target="_blank">登录</a>　<span><a href="http://localhost:9106/register.html"
-                                                                                                 target="_blank">免费注册</a></span>
+                        <li class="f-item">请<a href="http://localhost:9106/cas/login" target="_blank">登录</a>　<span><a
+                                href="http://localhost:9106/register.html"
+                                target="_blank">免费注册</a></span>
                         </li>
                     </ul>
                     <ul class="fr">
@@ -66,22 +67,12 @@
                                 <div class="input-append">
                                     <!--绑定关键字和contentController.js中的搜索方法
                                         首页搜索后跳转到搜索页-->
-                                    <input type="text" id="autocomplete" ng-model="keywords" type="text" class="input-error input-xxlarge"/>
-                                    <button class="sui-btn btn-xlarge btn-danger" ng-click="search()" type="button">搜索</button>
+                                    <input type="text" id="autocomplete" ng-model="keywords" type="text"
+                                           class="input-error input-xxlarge"/>
+                                    <button class="sui-btn btn-xlarge btn-danger" ng-click="search()" type="button">搜索
+                                    </button>
                                 </div>
                             </form>
-                        </div>
-                        <div class="hotwords">
-                            <ul>
-                                <li class="f-item">乐换首发</li>
-                                <li class="f-item">亿元优惠</li>
-                                <li class="f-item">9.9元团购</li>
-                                <li class="f-item">每满99减30</li>
-                                <li class="f-item">亿元优惠</li>
-                                <li class="f-item">9.9元团购</li>
-                                <li class="f-item">办公用品</li>
-
-                            </ul>
                         </div>
                     </div>
                     <div class="yui3-u Right shopArea">
@@ -94,27 +85,24 @@
                                 </a>
                                 <div class="clearfix shopcarlist" id="shopcarlist" style="display:none">
                                     <p>"啊哦，你的购物车还没有商品哦！"</p>
-                                    <p>"啊哦，你的购物车还没有商品哦！"</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="yui3-g NavList">
                     <div class="yui3-u Left all-sort">
                         <h4>全部商品分类</h4>
                     </div>
                     <div class="yui3-u Center navArea">
                         <ul class="nav">
-                            <li class="f-item">服装城</li>
-                            <li class="f-item">美妆馆</li>
+                            <li class="f-item">服装</li>
+                            <li class="f-item">图书</li>
                             <li class="f-item">乐换超市</li>
                             <li class="f-item">全球购</li>
-                            <li class="f-item">闪购</li>
-                            <li class="f-item">团购</li>
-                            <li class="f-item">有趣</li>
-                            <li class="f-item"><a href="seckill-index.html" target="_blank">秒杀</a></li>
+                            <li class="f-item">生活用品</li>
+                            <li class="f-item">电子产品</li>
+                            <li class="f-item">学习用品</li>
                         </ul>
                     </div>
                     <div class="yui3-u Right"></div>
@@ -665,7 +653,7 @@
                 <!--data-ride="carousel" 属性用于标记轮播在页面加载时就开始动画播放-->
                 <div id="myCarousel" data-ride="carousel" data-interval="2500" class="sui-carousel slide">
                     <ol class="carousel-indicators">
-                         <!--contentList[1]，contentList是在contentController.js中定义的变量列表，而1为categoryId，广告分类id-->
+                        <!--contentList[1]，contentList是在contentController.js中定义的变量列表，而1为categoryId，广告分类id-->
                         <!--三目运算符，表示当index为0的时候，就为active状态，否则为空，如果不激活则会延迟刷新轮播图-->
                         <!--data-slide-to是Bootstrap轮播的一个属性
                             使用它来向轮播传递一个原始滑动索引，data-slide-to="2" 将把滑块移动到一个特定的索引，索引从 0 开始计数。-->
@@ -697,87 +685,38 @@
                             <span class="bold">[公告]</span>备战开学季 全民半价购数码
                         </li>
                         <li>
-                            <span class="bold">[特惠]</span>备战开学季 全民半价购数码
-                        </li>
-                        <li>
                             <span class="bold">[公告]</span>备战开学季 全民半价购数码
-                        </li>
-                        <li>
-                            <span class="bold">[特惠]</span>备战开学季 全民半价购数码
                         </li>
                     </ul>
                 </div>
-                <ul class="yui3-g Lifeservice">
-                    <li class="yui3-u-1-4 life-item tab-item">
-                        <i class="list-item list-item-1"></i>
-                        <span class="service-intro">话费</span>
-                    </li>
-                    <li class="yui3-u-1-4 life-item tab-item">
-                        <i class="list-item list-item-2"></i>
-                        <span class="service-intro">机票</span>
-                    </li>
-                    <li class="yui3-u-1-4 life-item tab-item">
-                        <i class="list-item list-item-3"></i>
-                        <span class="service-intro">电影票</span>
-                    </li>
-                    <li class="yui3-u-1-4 life-item tab-item">
-                        <i class="list-item list-item-4"></i>
-                        <span class="service-intro">游戏</span>
-                    </li>
-                    <li class="yui3-u-1-4 life-item notab-item">
-                        <i class="list-item list-item-5"></i>
-                        <span class="service-intro">彩票</span>
-                    </li>
-                    <li class="yui3-u-1-4 life-item notab-item">
-                        <i class="list-item list-item-6"></i>
-                        <span class="service-intro">加油站</span>
-                    </li>
-                    <li class="yui3-u-1-4 life-item notab-item">
-                        <i class="list-item list-item-7"></i>
-                        <span class="service-intro">酒店</span>
-                    </li>
-                    <li class="yui3-u-1-4 life-item notab-item">
-                        <i class="list-item list-item-8"></i>
-                        <span class="service-intro">火车票</span>
-                    </li>
-                    <li class="yui3-u-1-4 life-item  notab-item">
-                        <i class="list-item list-item-9"></i>
-                        <span class="service-intro">众筹</span>
-                    </li>
-                    <li class="yui3-u-1-4 life-item notab-item">
-                        <i class="list-item list-item-10"></i>
-                        <span class="service-intro">理财</span>
-                    </li>
-                    <li class="yui3-u-1-4 life-item notab-item">
-                        <i class="list-item list-item-11"></i>
-                        <span class="service-intro">礼品卡</span>
-                    </li>
-                    <li class="yui3-u-1-4 life-item notab-item">
-                        <i class="list-item list-item-12"></i>
-                        <span class="service-intro">白条</span>
-                    </li>
-                </ul>
-                <div class="life-item-content">
-                    <div class="life-detail">
-                        <i class="close">关闭</i>
-                        <p>话费充值</p>
-                        <form action="" class="sui-form form-horizontal">
-                            号码：<input type="text" id="inputphoneNumber" placeholder="输入你的号码"/>
-                        </form>
-                        <button class="sui-btn btn-danger">快速充值</button>
+                <div class="news">
+                    <h4><em class="fl">学生优惠</em><span class="fr tip">更多 ></span></h4>
+                    <div class="clearix"></div>
+                    <div class="yui3-u row-340 floorBanner">
+                        <div id="floorCarousel" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
+                            <ol class="carousel-indicators">
+                                <li data-target="#floorCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#floorCarousel" data-slide-to="1"></li>
+                                <li data-target="#floorCarousel" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="active item">
+                                    <img src="img/floor-1-b01.png">
+                                </div>
+                                <div class="item">
+                                    <img src="img/floor-1-b02.png">
+                                </div>
+                                <div class="item">
+                                    <img src="img/floor-1-b03.png">
+                                </div>
+                            </div>
+                            <a href="#floorCarousel" data-slide="prev" class="carousel-control left">‹</a>
+                            <a href="#floorCarousel" data-slide="next" class="carousel-control right">›</a>
+                        </div>
                     </div>
-                    <div class="life-detail">
-                        <i class="close">关闭</i> 机票
+                    <div class="ads">
+                        <img src="img/ad1.png"/>
                     </div>
-                    <div class="life-detail">
-                        <i class="close">关闭</i> 电影票
-                    </div>
-                    <div class="life-detail">
-                        <i class="close">关闭</i> 游戏
-                    </div>
-                </div>
-                <div class="ads">
-                    <img src="img/ad1.png"/>
                 </div>
             </div>
         </div>
@@ -1354,38 +1293,13 @@
                     <li>友情链接<span class="space"></span></li>
                     <li>关于我们</li>
                 </ul>
-                <p>地址：广东省广州市天河区中山大道西293号 邮编：510000   电话：020-12345678</p>
+                <p>地址：广东省广州市天河区中山大道西293号 邮编：510000 电话：020-12345678</p>
                 <p>粤ICP备19020121号粤公网安备100210296242</p>
             </div>
         </div>
     </div>
 </div>
 <!--页面底部END-->
-<!-- 楼层位置 -->
-<div id="floor-index" class="floor-index">
-    <ul>
-        <li>
-            <a class="num" href="javascript:;" style="display: none;">1F</a>
-            <a class="word" href="javascript;;" style="display: block;">家用电器</a>
-        </li>
-        <li>
-            <a class="num" href="javascript:;" style="display: none;">2F</a>
-            <a class="word" href="javascript;;" style="display: block;">手机通讯</a>
-        </li>
-        <li>
-            <a class="num" href="javascript:;" style="display: none;">3F</a>
-            <a class="word" href="javascript;;" style="display: block;">电脑办公</a>
-        </li>
-        <li>
-            <a class="num" href="javascript:;" style="display: none;">4F</a>
-            <a class="word" href="javascript;;" style="display: block;">家居家具</a>
-        </li>
-        <li>
-            <a class="num" href="javascript:;" style="display: none;">5F</a>
-            <a class="word" href="javascript;;" style="display: block;">运动户外</a>
-        </li>
-    </ul>
-</div>
 <!--侧栏面板开始-->
 <div class="J-global-toolbar">
     <div class="toolbar-wrap J-wrap">
@@ -1473,31 +1387,31 @@
 
             <!-- 侧栏按钮 -->
             <!--<div class="toolbar-tabs J-tab">-->
-                <!--<div onclick="cartPanelView.tabItemClick('cart')" class="toolbar-tab tbar-tab-cart" data="购物车"-->
-                     <!--tag="cart">-->
-                    <!--<i class="tab-ico"></i>-->
-                    <!--<em class="tab-text"></em>-->
-                    <!--<span class="tab-sub J-count " id="tab-sub-cart-count">0</span>-->
-                <!--</div>-->
-                <!--<div onclick="cartPanelView.tabItemClick('follow')" class="toolbar-tab tbar-tab-follow" data="我的关注"-->
-                     <!--tag="follow">-->
-                    <!--<i class="tab-ico"></i>-->
-                    <!--<em class="tab-text"></em>-->
-                    <!--<span class="tab-sub J-count hide">0</span>-->
-                <!--</div>-->
-                <!--<div onclick="cartPanelView.tabItemClick('history')" class="toolbar-tab tbar-tab-history" data="我的足迹"-->
-                     <!--tag="history">-->
-                    <!--<i class="tab-ico"></i>-->
-                    <!--<em class="tab-text"></em>-->
-                    <!--<span class="tab-sub J-count hide">0</span>-->
-                <!--</div>-->
+            <!--<div onclick="cartPanelView.tabItemClick('cart')" class="toolbar-tab tbar-tab-cart" data="购物车"-->
+            <!--tag="cart">-->
+            <!--<i class="tab-ico"></i>-->
+            <!--<em class="tab-text"></em>-->
+            <!--<span class="tab-sub J-count " id="tab-sub-cart-count">0</span>-->
+            <!--</div>-->
+            <!--<div onclick="cartPanelView.tabItemClick('follow')" class="toolbar-tab tbar-tab-follow" data="我的关注"-->
+            <!--tag="follow">-->
+            <!--<i class="tab-ico"></i>-->
+            <!--<em class="tab-text"></em>-->
+            <!--<span class="tab-sub J-count hide">0</span>-->
+            <!--</div>-->
+            <!--<div onclick="cartPanelView.tabItemClick('history')" class="toolbar-tab tbar-tab-history" data="我的足迹"-->
+            <!--tag="history">-->
+            <!--<i class="tab-ico"></i>-->
+            <!--<em class="tab-text"></em>-->
+            <!--<span class="tab-sub J-count hide">0</span>-->
+            <!--</div>-->
             <!--</div>-->
 
             <!--<div class="toolbar-footer">-->
-                <!--<div class="toolbar-tab tbar-tab-top"><a href="#"> <i class="tab-ico  "></i> <em-->
-                        <!--class="footer-tab-text">顶部</em> </a></div>-->
-                <!--<div class="toolbar-tab tbar-tab-feedback"><a href="#" target="_blank"> <i class="tab-ico"></i> <em-->
-                        <!--class="footer-tab-text ">反馈</em> </a></div>-->
+            <!--<div class="toolbar-tab tbar-tab-top"><a href="#"> <i class="tab-ico  "></i> <em-->
+            <!--class="footer-tab-text">顶部</em> </a></div>-->
+            <!--<div class="toolbar-tab tbar-tab-feedback"><a href="#" target="_blank"> <i class="tab-ico"></i> <em-->
+            <!--class="footer-tab-text ">反馈</em> </a></div>-->
             <!--</div>-->
 
             <div class="toolbar-mini"></div>
