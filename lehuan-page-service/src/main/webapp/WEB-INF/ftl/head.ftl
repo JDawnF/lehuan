@@ -9,27 +9,17 @@
 						<li class="f-item">请<a href="login.html" target="_blank">登录</a>　<span><a href="register.html" target="_blank">免费注册</a></span></li>
 					</ul>
 					<ul class="fr">
-						<li class="f-item">我的订单</li>
-						<li class="f-item space"></li>
-						<li class="f-item"><a href="home.html" target="_blank">我的乐换</a></li>
-						<li class="f-item space"></li>
-						<li class="f-item">乐换会员</li>
-						<li class="f-item space"></li>
-						<li class="f-item">企业采购</li>
-						<li class="f-item space"></li>
-						<li class="f-item">关注乐换</li>
-						<li class="f-item space"></li>
-						<li class="f-item" id="service">
-							<span>客户服务</span>
-							<ul class="service">
-								<li><a href="cooperation.html" target="_blank">合作招商</a></li>
-								<li><a href="shoplogin.html" target="_blank">商家后台</a></li>
-								<li><a href="cooperation.html" target="_blank">合作招商</a></li>
-								<li><a href="#">商家后台</a></li>
-							</ul>
-						</li>
-						<li class="f-item space"></li>
-						<li class="f-item">网站导航</li>
+                        <li class="f-item"><a href="home-index.html" target="_blank">我的订单</a></li>
+                        <li class="f-item space"></li>
+                        <li class="f-item"><a href="home-index.html" target="_blank">我的乐换</a></li>
+                        <li class="f-item space"></li>
+                        <li class="f-item"><a href="#">关注乐换</a></li>
+                        <li class="f-item space"></li>
+                        <li class="f-item" id="service">
+                            <span><a href="#">客户服务</a></span>
+                        </li>
+                        <li class="f-item space"></li>
+                        <li class="f-item"><a href="#">网站导航</a></li>
 					</ul>
 				</div>
 			</div>
@@ -52,18 +42,6 @@
 								</div>
 							</form>
 						</div>
-						<div class="hotwords">
-							<ul>
-								<li class="f-item">乐换首发</li>
-								<li class="f-item">亿元优惠</li>
-								<li class="f-item">9.9元团购</li>
-								<li class="f-item">每满99减30</li>
-								<li class="f-item">亿元优惠</li>
-								<li class="f-item">9.9元团购</li>
-								<li class="f-item">办公用品</li>
-
-							</ul>
-						</div>
 					</div>
 					<div class="yui3-u Right shopArea">
 						<div class="fr shopcar">
@@ -74,7 +52,6 @@
 									<i class="shopnum">0</i>
 								</a>
 								<div class="clearfix shopcarlist" id="shopcarlist" style="display:none">
-									<p>"啊哦，你的购物车还没有商品哦！"</p>
 									<p>"啊哦，你的购物车还没有商品哦！"</p>
 								</div>
 							</div>
@@ -88,14 +65,13 @@
 					</div>
 					<div class="yui3-u Center navArea">
 						<ul class="nav">
-							<li class="f-item">服装城</li>
-							<li class="f-item">美妆馆</li>
-							<li class="f-item">乐换超市</li>
-							<li class="f-item">全球购</li>
-							<li class="f-item">闪购</li>
-							<li class="f-item">团购</li>
-							<li class="f-item">有趣</li>
-							<li class="f-item"><a href="seckill-index.html" target="_blank">秒杀</a></li>
+                            <li class="f-item">服装</li>
+                            <li class="f-item">图书</li>
+                            <li class="f-item">乐换超市</li>
+                            <li class="f-item">全球购</li>
+                            <li class="f-item">生活用品</li>
+                            <li class="f-item">电子产品</li>
+                            <li class="f-item">学习用品</li>
 						</ul>
 					</div>
 					<div class="yui3-u Right"></div>
