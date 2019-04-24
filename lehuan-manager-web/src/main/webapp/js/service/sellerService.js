@@ -30,8 +30,8 @@ app.service('sellerService', function ($http) {
         return $http.post('../seller/search.do?page=' + page + "&rows=" + rows, searchEntity);
     }
     //更改状态
-    this.updateStatus = function (ids, status) {
-        return $http.get('../goods/updateStatus.do?ids=' + ids + '&status=' + status);
+    this.updateStatus = function (sellerId, status) {
+        return $http.get('../seller/updateStatus.do?sellerId=' + sellerId + '&status=' + status);
     }
 
 });

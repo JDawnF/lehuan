@@ -1,7 +1,6 @@
 package com.lehuan.order.service;
 import java.util.List;
 import com.lehuan.pojo.TbOrder;
-import com.lehuan.pojo.TbPayLog;
 
 import entity.PageResult;
 /**
@@ -57,21 +56,11 @@ public interface OrderService {
 	 * @return
 	 */
 	public PageResult findPage(TbOrder order, int pageNum, int pageSize);
-	
-	/**
-	 * 根据用户ID获取支付日志
-	 * @param userId
-	 * @return
-	 */
-	public TbPayLog searchPayLogFromRedis(String userId);
-	
-	
+
 	/**
 	 * 支付成功修改状态
 	 * @param out_trade_no
 	 * @param transaction_id
 	 */
-	public void updateOrderStatus(String out_trade_no, String transaction_id);
-	
-	
+//	public void updateOrderStatus(String out_trade_no, String transaction_id);
 }

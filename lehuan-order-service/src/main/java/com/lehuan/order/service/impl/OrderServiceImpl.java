@@ -1,7 +1,6 @@
 package com.lehuan.order.service.impl;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,12 +15,10 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.lehuan.mapper.TbOrderItemMapper;
 import com.lehuan.mapper.TbOrderMapper;
-import com.lehuan.mapper.TbPayLogMapper;
 import com.lehuan.pojo.TbOrder;
 import com.lehuan.pojo.TbOrderExample;
 import com.lehuan.pojo.TbOrderExample.Criteria;
 import com.lehuan.pojo.TbOrderItem;
-import com.lehuan.pojo.TbPayLog;
 import com.lehuan.order.service.OrderService;
 
 import entity.PageResult;
@@ -37,8 +34,8 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private TbOrderMapper orderMapper;
 
-    @Autowired
-    private TbPayLogMapper payLogMapper;
+//    @Autowired
+//    private TbPayLogMapper payLogMapper;
 
     @Autowired
     private RedisTemplate redisTemplate;
@@ -203,34 +200,34 @@ public class OrderServiceImpl implements OrderService {
         return new PageResult(page.getTotal(), page.getResult());
     }
 
-    @Override
-    public TbPayLog searchPayLogFromRedis(String userId) {
-        return (TbPayLog) redisTemplate.boundHashOps("payLog").get(userId);
-    }
-
-    @Override
-    public void updateOrderStatus(String out_trade_no, String transaction_id) {
-        //1.修改支付日志的状态及相关字段
-        TbPayLog payLog = payLogMapper.selectByPrimaryKey(out_trade_no);
-        payLog.setPayTime(new Date());//支付时间
-        payLog.setTradeState("1");//交易成功
-        payLog.setTransactionId(transaction_id);//微信的交易流水号
-
-        payLogMapper.updateByPrimaryKey(payLog);//修改
-        //2.修改订单表的状态
-        String orderList = payLog.getOrderList();// 订单ID 串
-        String[] orderIds = orderList.split(",");
-
-        for (String orderId : orderIds) {
-            TbOrder order = orderMapper.selectByPrimaryKey(Long.valueOf(orderId));
-            order.setStatus("2");//已付款状态
-            order.setPaymentTime(new Date());//支付时间
-            orderMapper.updateByPrimaryKey(order);
-        }
-
-        //3.清除缓存中的payLog
-        redisTemplate.boundHashOps("payLog").delete(payLog.getUserId());
-
-    }
+//    @Override
+//    public TbPayLog searchPayLogFromRedis(String userId) {
+//        return (TbPayLog) redisTemplate.boundHashOps("payLog").get(userId);
+//    }
+//
+//    @Override
+//    public void updateOrderStatus(String out_trade_no, String transaction_id) {
+//        //1.修改支付日志的状态及相关字段
+//        TbPayLog payLog = payLogMapper.selectByPrimaryKey(out_trade_no);
+//        payLog.setPayTime(new Date());//支付时间
+//        payLog.setTradeState("1");//交易成功
+//        payLog.setTransactionId(transaction_id);//微信的交易流水号
+//
+//        payLogMapper.updateByPrimaryKey(payLog);//修改
+//        //2.修改订单表的状态
+//        String orderList = payLog.getOrderList();// 订单ID 串
+//        String[] orderIds = orderList.split(",");
+//
+//        for (String orderId : orderIds) {
+//            TbOrder order = orderMapper.selectByPrimaryKey(Long.valueOf(orderId));
+//            order.setStatus("2");//已付款状态
+//            order.setPaymentTime(new Date());//支付时间
+//            orderMapper.updateByPrimaryKey(order);
+//        }
+//
+//        //3.清除缓存中的payLog
+//        redisTemplate.boundHashOps("payLog").delete(payLog.getUserId());
+//
+//    }
 
 }

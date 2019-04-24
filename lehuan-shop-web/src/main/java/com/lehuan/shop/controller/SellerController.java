@@ -26,8 +26,7 @@ public class SellerController {
     private SellerService sellerService;
 
     /**
-     * 返回全部列表
-     *
+     * 返回全部商家列表
      * @return
      */
     @RequestMapping("/findAll")
@@ -37,8 +36,7 @@ public class SellerController {
 
 
     /**
-     * 返回全部列表
-     *
+     * 分页返回全部列表
      * @return
      */
     @RequestMapping("/findPage")
@@ -48,7 +46,6 @@ public class SellerController {
 
     /**
      * 增加
-     *
      * @param seller
      * @return
      */
@@ -70,7 +67,6 @@ public class SellerController {
 
     /**
      * 修改
-     *
      * @param seller
      * @return
      */
@@ -86,8 +82,7 @@ public class SellerController {
     }
 
     /**
-     * 获取实体
-     *
+     * 获取实体,显示商家具体信息
      * @param id
      * @return
      */

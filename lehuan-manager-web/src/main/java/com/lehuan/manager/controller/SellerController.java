@@ -117,6 +117,7 @@ public class SellerController {
 	@RequestMapping("/updateStatus")
 	public Result updateStatus(String sellerId,String status){
 		try {
+			System.out.println(sellerId+status);
 			sellerService.updateStatus(sellerId, status);
 			return new Result(true, "审核状态成功"); 
 		} catch (Exception e) {
