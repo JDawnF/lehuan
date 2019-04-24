@@ -50,8 +50,6 @@ app.controller('sellerController', function ($scope, $controller, sellerService)
             }
         );
     }
-
-
     //批量删除
     $scope.dele = function () {
         //获取选中的复选框
@@ -76,6 +74,8 @@ app.controller('sellerController', function ($scope, $controller, sellerService)
             }
         );
     }
+    // 商家状态，0表示审核未通过，1表示审核通过
+    // $scope.status = ['审核未通过','审核通过'];
     //更新商家状态
     $scope.updateStatus = function (sellerId, status) {
         sellerService.updateStatus(sellerId, status).success(function (response) {

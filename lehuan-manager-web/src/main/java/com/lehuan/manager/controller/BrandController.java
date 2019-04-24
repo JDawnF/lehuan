@@ -20,7 +20,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/brand")
 public class BrandController {
-    @Reference
+    @Reference  // Dubbo服务调用注解
     private BrandService brandService;
 
     @RequestMapping("/findAll")

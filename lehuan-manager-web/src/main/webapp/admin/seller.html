@@ -32,7 +32,6 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">商家管理</h3>
                     </div>
-
                     <div class="box-body">
                         <!-- 数据表格 -->
                         <div class="table-box">
@@ -42,11 +41,8 @@
 							        公司名称：<input  >
 									店铺名称： <input  >
 									状态：
-									<input type="radio" value="" />全部
-									<input type="radio" value="0" />待审核
-									<input type="radio" value="1" />已审核
-									<input type="radio" value="2" />审核未通过
-									<input type="radio" value="3" />关闭
+									<input type="radio" value="0" />审核未通过
+									<input type="radio" value="1" />审核通过
 									<button class="btn btn-default" >查询</button>                                    
                                 </div>
                             </div>
@@ -76,6 +72,9 @@
 										  <td>{{entity.nickName}}</td>
 										  <td>{{entity.linkmanName}}</td>
 										  <td>{{entity.telephone}}</td>
+										  <td>
+											  {{status[entity.status]}}
+										  </td>
 										  <td class="text-center">
 											  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
 													  data-target="#sellerModal" ng-click="findOne(entity.sellerId)">详情
