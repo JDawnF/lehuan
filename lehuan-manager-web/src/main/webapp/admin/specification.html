@@ -21,9 +21,7 @@
     <script type="text/javascript" src="../js/service/specificationService.js"></script>
     <script type="text/javascript" src="../js/controller/baseController.js"></script>
     <script type="text/javascript" src="../js/controller/specificationController.js"></script>
-
 </head>
-
 <body class="hold-transition skin-red sidebar-mini" ng-app="lehuan" ng-controller="specificationController">
 <!-- .box-body -->
 <div class="box-header with-border">
@@ -32,16 +30,15 @@
 <div class="box-body">
     <!-- 数据表格 -->
     <div class="table-box">
-
         <!--工具栏-->
         <div class="pull-left">
             <div class="form-group form-inline">
                 <div class="btn-group">
+<!--修改specification.html “新建”按钮，弹出窗口时对entity进行初始化，否则向集合添加数据时会报错！-->
                     <button type="button" class="btn btn-default" title="新建" data-toggle="modal"
                             data-target="#editModal" ng-click="entity={'specificationOptionList':[]}"><i class="fa fa-file-o"></i> 新建
                     </button>
                     <button type="button" class="btn btn-default" title="删除" ng-click="dele()"><i class="fa fa-trash-o"></i> 删除</button>
-
                     <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i
                             class="fa fa-refresh"></i> 刷新
                     </button>
@@ -131,6 +128,7 @@
                             <input class="form-control" placeholder="排序" ng-model="pojo.orders">
                         </td>
                         <td>
+                            <!--$index 用于获取ng-repeat指令循环中的索引,即在ng-repeat循环中$index表示当前索引-->
                             <button type="button" class="btn btn-default" title="删除" ng-click="deleTableRow($index)"><i class="fa fa-trash-o"></i> 删除
                             </button>
                         </td>

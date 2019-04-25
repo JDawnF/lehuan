@@ -61,7 +61,7 @@ public class SpecificationServiceImpl implements SpecificationService {
     public void add(Specification specification) {
         // 保存规格,会返回一个主键，可以看mapper.xml
         specificationMapper.insert(specification.getSpecification());
-        // 保存规格选项
+        // 遍历并保存规格选项
         for (TbSpecificationOption specificationOption : specification.getSpecificationOptionList()) {
             // 设置规格的ID:
             specificationOption.setSpecId(specification.getSpecification().getId());
@@ -99,8 +99,7 @@ public class SpecificationServiceImpl implements SpecificationService {
     }
 
     /**
-     * 根据ID获取Specification实体
-     *
+     * 根据ID获取规格组合实体
      * @param id
      * @return
      */
@@ -111,7 +110,7 @@ public class SpecificationServiceImpl implements SpecificationService {
         TbSpecification tbSpecification = specificationMapper.selectByPrimaryKey(id);
         specification.setSpecification(tbSpecification);
 
-        // 根据规格的ID查询获得规格选项列表
+        // 根据规格的ID查询获得规格选项列表，创建查询条件
         TbSpecificationOptionExample example = new TbSpecificationOptionExample();
         TbSpecificationOptionExample.Criteria criteria = example.createCriteria();
         criteria.andSpecIdEqualTo(id);
@@ -129,7 +128,6 @@ public class SpecificationServiceImpl implements SpecificationService {
         for (Long id : ids) {
             // 删除规格
             specificationMapper.deleteByPrimaryKey(id);
-
             // 删除规格选项:
             TbSpecificationOptionExample example = new TbSpecificationOptionExample();
             TbSpecificationOptionExample.Criteria criteria = example.createCriteria();

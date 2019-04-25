@@ -49,7 +49,7 @@ app.controller('brandController', function ($scope, $controller, brandService) {
             }
         );
     }
-    //查询实体
+    //查询品牌实体
     $scope.findOne = function (id) {
         brandService.findOne(id).success(
             function (response) {
@@ -72,20 +72,17 @@ app.controller('brandController', function ($scope, $controller, brandService) {
                 }
             );
         }
-
     }
     //初始化searchEntity，否则前端会报错400，在列表中也需要传参page，size，
     // 可以直接调用reloadList相当于调用了search传参
     $scope.searchEntity = {};
     //条件查询
     $scope.search = function (page, rows) {
-
         brandService.search(page,rows,$scope.searchEntity).success(
             function (response) {
                 $scope.list = response.rows;//显示当前页数据
                 $scope.paginationConf.totalItems = response.total;//更新总记录数
             }
         );
-
     }
 });

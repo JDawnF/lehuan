@@ -45,19 +45,21 @@ public class BrandServiceImpl implements BrandService {
     public PageResult findPage(TbBrand brand, int pageNum, int pageSize) {
         //        mybatis的分页，这样子写好之后会自动进行分页
         PageHelper.startPage(pageNum, pageSize);
-//        创建条件
+//        创建查询条件
         TbBrandExample example = new TbBrandExample();
         Criteria criteria = example.createCriteria();
-//        根据前端用户的选择进行不同的模糊查询
+//        根据前端用户的选择，传过来不同的值，进行不同的模糊查询
         if (brand != null) {
-//            判断品牌名称是否为空，并且是否为空字符串
+            //  判断品牌名称是否为空，并且是否为空字符串
             if (brand.getName() != null && brand.getName().length() > 0) {
                 criteria.andNameLike("%" + brand.getName() + "%");
             }
+            // 判断品牌首字母是否为空，并且是否为空字符串
             if (brand.getFirstChar() != null && brand.getFirstChar().length() > 0) {
                 criteria.andFirstCharEqualTo(brand.getFirstChar());
             }
         }
+        // 用分页Page类作为接受查询结果的类型
         Page<TbBrand> page = (Page<TbBrand>) brandMapper.selectByExample(example);
 //        返回总记录数和结果
         return new PageResult(page.getTotal(), page.getResult());

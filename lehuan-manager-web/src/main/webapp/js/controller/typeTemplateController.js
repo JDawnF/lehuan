@@ -30,9 +30,9 @@ app.controller('typeTemplateController' ,function($scope,$controller,typeTemplat
 				$scope.entity= response;		
 				
 				//转换字符串为json对象（集合），是js原生的方法，entity的值对应数据库中相应的表字段
-				$scope.entity.brandIds=  JSON.parse( $scope.entity.brandIds);
-				$scope.entity.specIds= JSON.parse($scope.entity.specIds);
-				$scope.entity.customAttributeItems = JSON.parse($scope.entity.customAttributeItems);
+				$scope.entity.brandIds= JSON.parse($scope.entity.brandIds);	// 品牌
+				$scope.entity.specIds= JSON.parse($scope.entity.specIds);	// 规格
+				$scope.entity.customAttributeItems = JSON.parse($scope.entity.customAttributeItems);	//自定义属性
 				
 			}
 		);				

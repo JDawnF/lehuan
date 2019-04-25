@@ -26,7 +26,7 @@ public interface BrandService {
 	 * 按条件返回品牌分页列表,因为有多个查询条件，所以用TbBrand类型参数接收
 	 * @param pageNum   当前页面
 	 * @param pageSize	每页记录数
-	 * @return
+	 * @return			搜索分页结果
 	 */
 	public PageResult findPage(TbBrand brand, int pageNum, int pageSize);
 //	增加品牌接口
