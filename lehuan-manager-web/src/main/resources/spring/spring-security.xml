@@ -11,12 +11,16 @@
     <http pattern="/img/**" security="none"></http>
     <http pattern="/js/**" security="none"></http>
     <http pattern="/plugins/**" security="none"></http>
-    <!-- 页面拦截规则, /**包括根目录及其目录下的所有资源，如果这里只有/*表示根目录的资源，
+    <!-- 页面拦截规则,
+    /**包括根目录及其目录下的所有资源
+    /*表示根目录的资源，
     与web.xml中不一样，use-expressions表示是否启动SPEL表达式，默认是true-->
     <http use-expressions="false">
         <!--这里必须由ROLE_开头，表示当前用户必须有ROLE_USER的角色才可以访问根目录及其目录下的所有资源-->
         <intercept-url pattern="/**" access="ROLE_ADMIN"/>
         <!--开启表单登录功能-->
+<!--always-use-default-target：指定了是否在身份验证通过后总是跳转到default-target-url属性指定的URL。
+    这里表示身份验证后会跳到/admin/index.html这个页面-->
         <form-login login-page="/login.html" default-target-url="/admin/index.html"
                     authentication-failure-url="/login.html" always-use-default-target="true"/>
         <csrf disabled="true"/>
@@ -32,7 +36,6 @@
         <authentication-provider>
             <user-service>
                 <user name="admin" password="123456" authorities="ROLE_ADMIN"/>
-                <user name="baichen" password="123bai" authorities="ROLE_ADMIN"/>
             </user-service>
         </authentication-provider>
     </authentication-manager>

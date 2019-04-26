@@ -14,18 +14,19 @@
     <link rel="stylesheet" href="../css/style.css">
     <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
     <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- 引入angular的js -->
     <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
-    <!-- 分页组件开始 -->
-    <script src="../plugins/angularjs/pagination.js"></script>
+    <!-- 引入分页相关的JS和CSS -->
+    <script type="text/javascript" src="../plugins/angularjs/pagination.js"></script>
     <link rel="stylesheet" href="../plugins/angularjs/pagination.css">
-    <!-- 分页组件结束 -->
+
     <script type="text/javascript" src="../js/base_pagination.js"></script>
-    <script type="text/javascript" src="../js/service/sellerService.js"></script>
     <script type="text/javascript" src="../js/controller/baseController.js"></script>
     <script type="text/javascript" src="../js/controller/sellerController.js"></script>
-
+    <script type="text/javascript" src="../js/service/sellerService.js"></script>
 </head>
-<!--指令searchEntity={status:'0'}表示未审核的-->
+
 <body class="hold-transition skin-red sidebar-mini" ng-app="lehuan" ng-controller="sellerController"
       ng-init="searchEntity={status:'0'}">
 <!-- .box-body -->
@@ -33,9 +34,7 @@
     <div class="box-header with-border">
         <h3 class="box-title">商家审核</h3>
     </div>
-
     <div class="box-body">
-
         <!-- 数据表格 -->
         <div class="table-box">
             <!--工具栏-->
@@ -69,19 +68,21 @@
                     <td>{{entity.name}}</td>
                     <td>{{entity.nickName}}</td>
                     <td>{{entity.linkmanName}}</td>
-                    <td>{{entity.telephone}}</td>
+                    <td>{{entity.linkmanMobile}}</td>
                     <td class="text-center">
-                        <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                data-target="#sellerModal" ng-click="findOne(entity.sellerId)">详情
+                        <button type="button" ng-click="findOne(entity.sellerId)" class="btn bg-olive btn-xs"
+                                data-toggle="modal" data-target="#sellerModal">详情
                         </button>
                     </td>
                 </tr>
                 </tbody>
             </table>
             <!--数据列表/-->
-            <tm-pagination conf="paginationConf"></tm-pagination>
         </div>
         <!-- 数据表格 /-->
+        <!-- 分页 -->
+        <tm-pagination conf="paginationConf"></tm-pagination>
+
     </div>
     <!-- /.box-body -->
     <!-- 商家详情 -->
@@ -94,10 +95,12 @@
                     <h3 id="myModalLabel">商家详情</h3>
                 </div>
                 <div class="modal-body">
+
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#home" data-toggle="tab">基本信息</a></li>
                         <li><a href="#linkman" data-toggle="tab">联系人</a></li>
                     </ul>
+
                     <!-- 选项卡开始 -->
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane active in" id="home">
@@ -108,15 +111,15 @@
                                     <td>{{entity.name}}</td>
                                 </tr>
                                 <tr>
-                                    <td>店铺名称</td>
-                                    <td>{{entity.nickName}}</td>
+                                    <td>公司手机</td>
+                                    <td>{{entity.mobile}}</td>
                                 </tr>
                                 <tr>
-                                    <td>店铺电话</td>
+                                    <td>公司电话</td>
                                     <td>{{entity.telephone}}</td>
                                 </tr>
                                 <tr>
-                                    <td>店铺详细地址</td>
+                                    <td>公司详细地址</td>
                                     <td>{{entity.addressDetail}}</td>
                                 </tr>
                             </table>
@@ -142,9 +145,15 @@
                     <!-- 选项卡结束 -->
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="updateStatus(entity.sellerId,'1')">审核通过</button>
-                    <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" ng-click="updateStatus(entity.sellerId,'2')">审核未通过</button>
-                    <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" ng-click="updateStatus(entity.sellerId,'3')">关闭商家</button>
+                    <button class="btn btn-success" data-dismiss="modal" aria-hidden="true"
+                            ng-click="updateStatus(entity.sellerId,'1')">审核通过
+                    </button>
+                    <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true"
+                            ng-click="updateStatus(entity.sellerId,'2')">审核未通过
+                    </button>
+                    <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true"
+                            ng-click="updateStatus(entity.sellerId,'3')">关闭商家
+                    </button>
                     <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
                 </div>
             </div>

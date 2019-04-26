@@ -25,6 +25,7 @@
         <servlet-name>springmvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <!-- 指定加载的配置文件 ，通过参数contextConfigLocation加载-->
+        <!--<init-param>只在servlet的init()中生效-->
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:spring/springmvc.xml</param-value>
@@ -35,6 +36,8 @@
         <servlet-name>springmvc</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
+    <!--<context-param>是application范围内的初始化参数，用于向servlet-context提供键值对，
+    即应用程序的上下文信息，listener、filter等初始化时会用到这些信息-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:spring/spring-*.xml</param-value>
@@ -48,6 +51,7 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
     </filter>
+<!--springSecurityFilterChain这个名称是有Spring Security定义好的，不能修改，是Spring Security的入口-->
     <filter-mapping>
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>

@@ -3,7 +3,6 @@ package com.lehuan.sellergoods.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.data.redis.core.RedisTemplate;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
@@ -128,7 +127,6 @@ public class ItemCatServiceImpl implements ItemCatService {
             //大key ：itemCat和小key：itemCat.getName()，值为模板ID
             redisTemplate.boundHashOps("itemCat").put(itemCat.getName(), itemCat.getTypeId());
         }
-        System.out.println("将模板ID放入缓存");
         return itemCatMapper.selectByExample(example);
     }
 }

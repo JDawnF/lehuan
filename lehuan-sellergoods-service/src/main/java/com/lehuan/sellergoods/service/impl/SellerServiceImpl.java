@@ -70,8 +70,7 @@ public class SellerServiceImpl implements SellerService {
     }
 
     /**
-     * 根据ID获取实体
-     *
+     * 根据ID获取实体，显示商家详情
      * @param id
      * @return
      */
@@ -90,7 +89,7 @@ public class SellerServiceImpl implements SellerService {
         }
     }
 
-
+    // 分页显示商家
     @Override
     public PageResult findPage(TbSeller seller, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);

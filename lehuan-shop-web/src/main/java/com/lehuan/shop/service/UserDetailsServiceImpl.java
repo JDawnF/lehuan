@@ -16,8 +16,8 @@ import java.util.List;
  * @program: lehuan-parent
  * @description: 用户详情
  * @author: baichen
- *  2018-10-04 09:59
- * 这里不采用dubbo的@Reference注解，而是通过dubbo的配置文件的方式调用服务，需要有setter方法
+ * 这里不采用dubbo的@Reference注解，而是通过dubbo的配置文件的方式调用服务，
+ * 需要有setter方法，并且要在SpringSecurity的配置文件中注入dubbo
  **/
 public class UserDetailsServiceImpl implements UserDetailsService {
     private SellerService sellerService;
@@ -31,7 +31,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //        构建角色列表
         List<GrantedAuthority> grantAuths = new ArrayList();
         grantAuths.add(new SimpleGrantedAuthority("ROLE_SELLER"));
-//        得到上架对象
+//        得到商家对象
         TbSeller seller = sellerService.findOne(username);
 //        商家不存在或者商家未通过审核(状态不为1)都返回null
         if (seller != null) {

@@ -31,6 +31,7 @@
 
     <!-- 认证管理器 -->
     <authentication-manager>
+    <!--userDetailService是自定义的认证类-->
         <authentication-provider user-service-ref="userDetailService">
             <!--<user-service>-->
                 <!--<user name="admin" password="123456" authorities="ROLE_SELLER"/>-->

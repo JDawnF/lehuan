@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * @program: lehuan-parent
- * @description: 登录相关的控制器
+ * @description: 登录相关的控制器，显示用户名
  * @author: baichen
  **/
 @RestController

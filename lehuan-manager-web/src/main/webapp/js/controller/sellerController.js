@@ -23,8 +23,8 @@ app.controller('sellerController', function ($scope, $controller, sellerService)
     }
 
     //查询实体,显示商家实体
-    $scope.findOne = function (id) {
-        sellerService.findOne(id).success(
+    $scope.findOne = function (sellerId) {
+        sellerService.findOne(sellerId).success(
             function (response) {
                 $scope.entity = response;
             }
@@ -74,17 +74,18 @@ app.controller('sellerController', function ($scope, $controller, sellerService)
             }
         );
     }
-    // 商家状态，0表示审核未通过，1表示审核通过
-    // $scope.status = ['审核未通过','审核通过'];
+    // 商家状态，0：未审核   1：已审核   2：审核未通过   3：关闭
+    $scope.status = ['未审核', '已审核', '审核未通过', '关闭'];
     //更新商家状态
     $scope.updateStatus = function (sellerId, status) {
-        sellerService.updateStatus(sellerId, status).success(function (response) {
-            if (response.flag) {
-                //重新查询
-                $scope.reloadList();//重新加载
-            } else {
-                alert(response.message);
-            }
-        });
+        sellerService.updateStatus(sellerId, status).success(
+            function (response) {
+                if (response.success) {
+                    //重新查询
+                    $scope.reloadList();//重新加载
+                } else {
+                    alert(response.message);
+                }
+            });
     }
 });
