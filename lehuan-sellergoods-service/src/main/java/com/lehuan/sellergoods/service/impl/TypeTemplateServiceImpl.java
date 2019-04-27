@@ -149,7 +149,7 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
     }
 
     /**
-     * 根据规格ID查询规格选项
+     * 先根据模板ID查出模板，然后再通过模板查出规格，最后根据ID查询规格选项
      * @param id    规格ID
      * @return      规格选项
      */
@@ -171,7 +171,7 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
             criteria.andSpecIdEqualTo(new Long((Integer) map.get("id")));
 //          条件查询
             List<TbSpecificationOption> specOptionList = specificationOptionMapper.selectByExample(example);
-//          再给这个map添加一个key-value，//{"id":27,"text":"网络",options:[{id：xxx,optionName:移动2G}]}
+//          再给这个map添加一个key-value，//[{"options":[{"id"：xxx,"optionName":移动2G,"orders":x,"specId":x}]}]
             map.put("options", specOptionList);
         }
         return list;

@@ -75,6 +75,7 @@ public class GoodsServiceImpl implements GoodsService {
         saveItemList(goods);
     }
 
+    // 保存商品相关属性
     private void setItemValus(Goods goods, TbItem item) {
         item.setGoodsId(goods.getGoods().getId());//商品SPU编号
         item.setSellerId(goods.getGoods().getSellerId());//商家编号
@@ -101,6 +102,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     }
 
+    // 保存SKU列表
     private void saveItemList(Goods goods) {
         //用户是否选择显示规格
         if ("1".equals(goods.getGoods().getIsEnableSpec())) {
@@ -116,7 +118,7 @@ public class GoodsServiceImpl implements GoodsService {
                 itemMapper.insert(item);
             }
         } else {
-//            没有启动规格
+//            没有启动规格，使用默认
             TbItem item = new TbItem();
             item.setTitle(goods.getGoods().getGoodsName());//商品KPU+规格描述串作为SKU名称
             item.setPrice(goods.getGoods().getPrice());//价格
@@ -190,6 +192,14 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
 
+    /**
+     * 分页显示商品列表
+     *
+     * @param goods    商品
+     * @param pageNum  当前页码
+     * @param pageSize 每页记录数
+     * @return
+     */
     @Override
     public PageResult findPage(TbGoods goods, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
@@ -244,17 +254,33 @@ public class GoodsServiceImpl implements GoodsService {
 
     /**
      * 根据SPU的商品ID和状态查询Item表信息,SKU列表
-     * @param goodsIds		SPU的ID集合
-     * @param status		商品状态
-     * @return				商品列表
+     *
+     * @param goodsIds SPU的ID集合
+     * @param status   商品状态
+     * @return 商品列表
      */
     @Override
     public List<TbItem> findItemListByGoodsIdAndStatus(Long[] goodsIds, String status) {
-        TbItemExample example=new TbItemExample();
+        TbItemExample example = new TbItemExample();
         TbItemExample.Criteria criteria = example.createCriteria();
         criteria.andGoodsIdIn(Arrays.asList(goodsIds));   //商品ID集合
         criteria.andStatusEqualTo(status);   //状态
         return itemMapper.selectByExample(example);
+    }
+
+
+    @Override
+    public void updateIsMarketable(Long[] ids, String isMarketable) {
+        for (Long id : ids) {
+            TbGoods tbGoods = goodsMapper.selectByPrimaryKey(id);
+            //只有审核通过的才能上下架
+            if ("1".equals(tbGoods.getAuditStatus())) {
+                tbGoods.setIsMarketable(isMarketable);
+                goodsMapper.updateByPrimaryKey(tbGoods);
+            } else {
+                throw new RuntimeException("只有审核通过的才能上下架");
+            }
+        }
     }
 
 }

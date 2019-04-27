@@ -49,6 +49,8 @@
                     <a href="goods_edit.html" class="btn btn-default">新建</a>
                     <button type="button" class="btn btn-default" ng-click="dele()" title="删除"><i class="fa fa-trash-o"></i> 删除</button>
                     <button type="button" class="btn btn-default" title="提交审核"><i class="fa fa-check"></i> 提交审核</button>
+                    <button type="button" class="btn btn-default" ng-click="updateIsMarketable('1')" title="上架"><i class="fa fa-trash-o"></i> 上架</button>
+                    <button type="button" class="btn btn-default" ng-click="updateIsMarketable('0')" title="下架"><i class="fa fa-trash-o"></i> 下架</button>
                     <button type="button" class="btn btn-default" title="屏蔽" onclick='confirm("你确认要屏蔽吗？")'><i
                             class="fa fa-ban"></i> 屏蔽
                     </button>
@@ -88,6 +90,7 @@
                 <th class="sorting">二级分类</th>
                 <th class="sorting">三级分类</th>
                 <th class="sorting">状态</th>
+                <th class="sorting">上下架</th>
                 <th class="text-center">操作</th>
             </tr>
             </thead>
@@ -103,6 +106,9 @@
                 <td>{{itemCatList[entity.category3Id]}}</td>
                 <td>
                     {{status[entity.auditStatus]}}
+                </td>
+                <td>
+                    {{isMarketable[entity.isMarketable]}}
                 </td>
                 <td class="text-center">
                     <a href="goods_edit.html#?id={{entity.id}}" class="btn bg-olive btn-xs">修改</a>

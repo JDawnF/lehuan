@@ -22,14 +22,14 @@ app.controller('goodsController', function ($scope, $controller, $location, good
             );
         }
 
-        //查询实体
+        //查询商品实体
         $scope.findOne = function () {
             //search方法可以获取页面上的所有参数值
             var id = $location.search()['id'];
             if (id == null) {
                 return;
             }
-            //从数据库中查询出来的是字符串，我们必须将其转换为json对象才能实现信息的回显。
+            //从数据库中查询出来的都是字符串，我们必须将所有的商品信息转换为json对象才能实现信息的回显。
             goodsService.findOne(id).success(
                 function (response) {
                     $scope.entity = response;
@@ -71,7 +71,7 @@ app.controller('goodsController', function ($scope, $controller, $location, good
         //保存
         $scope.save = function () {
             //提取文本编辑器的值,商品介绍
-            $scope.entity.goodsDesc.introduction=editor.html();
+            $scope.entity.goodsDesc.introduction = editor.html();
             var serviceObject;  //服务层对象
             if ($scope.entity.goods.id != null) {   //如果有ID,商品不为空
                 // alert($scope.entity.id)
@@ -83,7 +83,7 @@ app.controller('goodsController', function ($scope, $controller, $location, good
             serviceObject.success(
                 function (response) {
                     if (response.success) {
-                        location.href="goods.html";//跳转到商品列表页
+                        location.href = "goods.html";//跳转到商品列表页
                     } else {
                         alert(response.message);
                     }
@@ -129,7 +129,7 @@ app.controller('goodsController', function ($scope, $controller, $location, good
                     }
                 });
         }
-        //定义页面实体结构，与数据库中的goodsDesc字段一样,相当于初始化
+        //定义页面实体结构，与数据库中的goodsDesc字段一样,相当于初始化，图片列表和规格列表
         $scope.entity = {goodsDesc: {itemImages: [], specificationItems: []}};
 //    将当前上传的图片实体存入图片列表
         $scope.add_image_entity = function () {
@@ -173,7 +173,7 @@ app.controller('goodsController', function ($scope, $controller, $location, good
             //根据选择的值，查询二级分类
             itemCatService.findOne(newValue).success(
                 function (response) {
-                    //更新模板ID
+                    //因为要插入到数据库的，所以直接赋值，更新模板ID
                     $scope.entity.goods.typeTemplateId = response.typeId;
                 }
             );
@@ -190,7 +190,7 @@ app.controller('goodsController', function ($scope, $controller, $location, good
                     // $location.search() 设置或获取 网页地址跟在问号后面的部分
                     //注意url必须为这样：http://localhost:9102/admin/goods_edit.html#?id=149187842867969。?前面有个#
                     if ($location.search()['id'] == null) {
-                        $scope.entity.goodsDesc.customAttributeItems = JSON.parse($scope.typeTemplate.customAttributeItems);
+                        $scope.entity.goodsDesc.customAttributeItems = JSON.parse($scope.typeTemplate.customAttributeItems);    // 扩展属性
                     }
                 }
             );
@@ -210,6 +210,7 @@ app.controller('goodsController', function ($scope, $controller, $location, good
                 } else {
                     //取消勾选,移除选项,即取消规格列表中的选项
                     object.attributeValue.splice(object.attributeValue.indexOf(value), 1);
+                    //如果选项都取消了，将此条记录移除
                     if (object.attributeValue.length == 0) {
                         $scope.entity.goodsDesc.specificationItems.splice(
                             $scope.entity.goodsDesc.specificationItems.indexOf(object), 1);
@@ -222,7 +223,7 @@ app.controller('goodsController', function ($scope, $controller, $location, good
         }
         //创建SKU列表
         $scope.createItemList = function () {
-            //初始化一个不带规格名称的集合，只有一条记录
+            //先初始化一个不带规格名称的集合，只有一条记录
             $scope.entity.itemList = [{spec: {}, price: 0, num: 99999, status: '0', isDefault: '0'}];
             var items = $scope.entity.goodsDesc.specificationItems;
             //    循环用户选择的规格，根据规格名称和已选择的规格选项对原集合进行扩充，
@@ -232,8 +233,8 @@ app.controller('goodsController', function ($scope, $controller, $location, good
                 $scope.entity.itemList = addColumn($scope.entity.itemList, items[i].attributeName, items[i].attributeValue);
             }
         }
-        //添加列值,相当于控制器的一个私有方法
-    //参数相当于哪个规格表，有哪些规格，添加了哪些规格属性，一个规格可以对应多个属性
+        //添加列值,相当于控制器的一个私有方法，所以不用加$scope，深克隆
+        //参数相当于哪个规格表，有哪些规格，添加了哪些规格属性，一个规格可以对应多个属性
         addColumn = function (list, columnName, columnValues) {
             //新的集合
             var newList = [];
@@ -248,12 +249,14 @@ app.controller('goodsController', function ($scope, $controller, $location, good
             }
             return newList;
         }
-        //商品状态,以为从数据库中取出来的是各种状态对应的数字表示
+
+        //商品状态,从数据库中取出来的是各种状态对应的数字表示
         // 所以这里要声明一个数组对应数据库中相应的数值，然后在前端显示对应的状态
         $scope.status = ['未审核', '已审核', '审核未通过', '已关闭'];
         $scope.itemCatList = [];  //商品分类列表,是这样的格式：['','']
         //查询商品分类列表
         $scope.findItemCatList = function () {
+            // 查询所有商品分类，返回一个list
             itemCatService.findAll().success(
                 function (response) {
                     for (var i = 0; i < response.length; i++) {
@@ -281,6 +284,22 @@ app.controller('goodsController', function ($scope, $controller, $location, good
             } else {
                 return false;
             }
+        }
+        //定义商品的上下架
+        $scope.isMarketable = ['下架', '上架'];
+        //批量上下架
+        $scope.updateIsMarketable = function (isMarketable) {
+            //获取选中的复选框
+            goodsService.updateIsMarketable($scope.selectIds, isMarketable).success(
+                function (response) {
+                    if (response.success) {
+                        $scope.reloadList();//刷新列表
+                        $scope.selectIds = [];//清空记录id的数组
+                    } else {
+                        alert(response.message);
+                    }
+                }
+            );
         }
     }
 );

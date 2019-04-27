@@ -74,8 +74,9 @@
                             <table>
                                 <tr>
                                     <td>
-                                        <!--ng-options属性可以在表达式中使用数组或对象来自动生成一个select中的option列表。
-                                        即用ng-options遍历itemCat1List数组，遍历得到的结果填充select
+                                        <!--
+                                        ng-options属性可以在表达式中使用数组或对象来自动生成一个select标签中的option列表。
+                                        即用ng-options遍历itemCat1List数组，遍历得到的结果填充select的option标签中
                                         itemCat1List相当于数据库中分类表中的一条记录,然后将变量存入goods表中的category1Id字段-->
                                         <select class="form-control" ng-model="entity.goods.category1Id"
                                                 ng-options="item.id as item.name for item in itemCat1List">

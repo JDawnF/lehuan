@@ -32,7 +32,6 @@ app.controller('baseController', function ($scope) {
 
 
     $scope.jsonToString = function (jsonString, key) {
-
         var json = JSON.parse(jsonString);
         var value = "";
 
@@ -46,8 +45,7 @@ app.controller('baseController', function ($scope) {
         return value;
     }
     //在list集合中根据某key的值查询对象
-    //[{“attributeName”:”规格名称”,”attributeValue”:[“规格选项1”,“规格选项2”.... ]} ,
-    // ....  ]
+    //[{“attributeName”:”规格名称”,”attributeValue”:[“规格选项1”,“规格选项2”.... ]} ,....  ]
     // 参数含义:
     // list:表示整个数组；key表示数组中每个字典元素的key，可以是list中不同的key;keyValue表示key对应的值,可以是list中不同的key对应的值
     $scope.searchObjectByKey = function (list, key, keyValue) {

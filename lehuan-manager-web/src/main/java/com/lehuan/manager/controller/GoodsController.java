@@ -114,7 +114,6 @@ public class GoodsController {
 
     /**
      * 批量删除
-     *
      * @param ids
      * @return
      */
