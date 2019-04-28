@@ -1,9 +1,4 @@
-/**
- * Created by hans on 2016/10/31.
- * 购物车数据
- */
 var cartModel = {
-
     // 加入购物车商品
     add : function (data, success) {
         czHttp.getJSON('../data/success.json', data, function (responseData) {
@@ -42,7 +37,6 @@ var cartModel = {
 
     // 购物车列表
     list : function (success) {
-
         czHttp.getJSON('../data/orders.json', {}, function(responseData){
             success(responseData);
         });
