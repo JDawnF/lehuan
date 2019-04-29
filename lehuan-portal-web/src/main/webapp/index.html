@@ -19,7 +19,7 @@
 
 
 </head>
-
+<!--默认调用CategoryId为1的广告-->
 <body ng-app="lehuan" ng-controller="contentController" ng-init="findByCategoryId(1)">
 <!-- 头部栏位 -->
 <!--页面顶部-->
@@ -623,20 +623,23 @@
                     </div>
                 </div>
             </div>
+            <!--轮播图要轮询两个列表，一个是图片列表，一个是图片上的小点-->
             <div class="yui3-u Center banerArea">
                 <!--使用data-slide-to是Bootstrap的data属性来实现banner轮播-->
                 <!--data-ride="carousel" 属性用于标记轮播在页面加载时就开始动画播放-->
-                <div id="myCarousel" data-ride="carousel" data-interval="2500" class="sui-carousel slide">
+                <div id="myCarousel" data-ride="carousel" data-interval="2000" class="sui-carousel slide">
                     <ol class="carousel-indicators">
-                        <!--contentList[1]，contentList是在contentController.js中定义的变量列表，而1为categoryId，广告分类id-->
-                        <!--三目运算符，表示当index为0的时候，就为active状态，否则为空，如果不激活则会延迟刷新轮播图-->
+                    <!--contentList[1]，contentList是在contentController.js中定义的变量列表，而1为categoryId，首页轮播广告-->
+                <!--三目运算符，表示当index为0的时候，就为active状态,一打开就会显示图片，否则为空，如果不激活则会延迟刷新轮播图-->
                         <!--data-slide-to是Bootstrap轮播的一个属性
                             使用它来向轮播传递一个原始滑动索引，data-slide-to="2" 将把滑块移动到一个特定的索引，索引从 0 开始计数。-->
+                        <!--li标签标示小点,$index 用于获取ng-repeat指令循环中的索引。-->
                         <li data-target="#myCarousel" data-slide-to="{{$index}}" class="{{$index==0?'active':''}}"
                             ng-repeat="item in contentList[1]"></li>
 
                     </ol>
                     <div class="carousel-inner">
+                    <!--三目运算符，表示当index为0的时候，为active状态，否则为空，如果不激活则会延迟刷新轮播图-->
                         <div class="{{$index==0?'active':''}} item" ng-repeat="item in contentList[1]">
                             <a href="{{item.url}}">
                                 <img src="{{item.pic}}"/>

@@ -76,12 +76,11 @@ public class UserServiceImpl implements UserService {
         //要用当前时间，所以用new
         user.setCreated(new Date());    //用户注册时间
         user.setUpdated(new Date());    //修改时间
-        //注册来源	,有hc、安卓、ios、微信等多种来源,可以从前端传或者用不同的方法实现不同的来源
+        //注册来源,有hc、安卓、ios、微信等多种来源,可以从前端传或者用不同的方法实现不同的来源
         user.setSourceType("1");
         user.setPassword(DigestUtils.md5Hex(user.getPassword()));//密码加密
         userMapper.insert(user);
     }
-
 
     /**
      * 修改
@@ -116,10 +115,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public PageResult findPage(TbUser user, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-
         TbUserExample example = new TbUserExample();
         TbUserExample.Criteria criteria = example.createCriteria();
-
         if (user != null) {
             if (user.getUsername() != null && user.getUsername().length() > 0) {
                 criteria.andUsernameLike("%" + user.getUsername() + "%");

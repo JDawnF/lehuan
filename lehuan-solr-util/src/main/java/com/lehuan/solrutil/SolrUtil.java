@@ -36,7 +36,7 @@ public class SolrUtil {
         for (TbItem item : tbItems) {
             System.out.println(item.getTitle());
             // {"机身内存":"16G","网络":"联通3G"}
-            //从数据库中提取规格json字符串转换为map，注意因为这里是{}，所以是用parseObject，如果是[]，则用parseArray
+    //从数据库中提取规格json字符串转换为map，注意因为这里是{}，所以是用parseObject，如果是[]，则用parseArray
             Map specMap = JSON.parseObject(item.getSpec(), Map.class);
             //给带注解的字段赋值
             item.setSpecMap(specMap);

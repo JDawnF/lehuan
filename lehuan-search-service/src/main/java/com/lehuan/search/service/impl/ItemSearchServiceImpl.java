@@ -42,7 +42,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
     @Override
     public Map search(Map searchMap) {
         Map map = new HashMap();
-//        因为用户可能会习惯性输入空格，输入空格可能会查询不到结果，所以这里要处理空格，将空格去掉
+        // 因为用户可能会习惯性输入空格，输入空格可能会查询不到结果，所以这里要处理空格，将空格去掉
         //获取关键字，然后去掉空格
         String keywords = (String) searchMap.get("keywords");
         searchMap.put("keywords", keywords.replace(" ", "")); //关键字去掉空格
@@ -53,9 +53,11 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         map.put("categoryList", categoryList);
         //3.查询品牌和规格列表
         String categoryName = (String) searchMap.get("category");
-        if (!"".equals(categoryName)) { //如果有分类名称，则根据分类名称查询品牌和规格参数
+        if (!"".equals(categoryName)) {
+            //如果有分类名称，说明前端用户选择了商品分类，则根据选择的分类名称查询品牌和规格参数
             map.putAll(searchBrandAndSpecList(categoryName));
-        } else {    // 如果分类名称为空，当分类列表大于0时，根据分类列表中的第一个分类查询品牌和规格参数
+        } else {
+            // 如果分类名称为空，当分类列表大于0时，根据分类列表中的第一个分类查询品牌和规格参数
             if (categoryList.size() > 0) {
                 map.putAll(searchBrandAndSpecList(categoryList.get(0)));
             }
@@ -67,7 +69,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
      * 根据关键字搜索商品列表
      *
      * @param searchMap 在searchController.js中封装好的搜索对象
-     * @return      返回搜索得到的商品列表
+     * @return          返回搜索得到的商品列表
      */
     private Map searchList(Map searchMap) {
         Map map = new HashMap();
@@ -92,7 +94,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         if (!"".equals(searchMap.get("category"))) {    // 如果商品分类为空
             // 拼接过滤查询的条件
             FilterQuery filterQuery = new SimpleFilterQuery();
-//        searchMap.get的key是controllerJs中传过来的key一样
+        //searchMap.get的key是controllerJs中传过来的key一样
             Criteria filterCriteria = new Criteria("item_category").is(searchMap.get("category"));
             filterQuery.addCriteria(filterCriteria);
             query.addFilterQuery(filterQuery);  // 添加过滤查询
@@ -101,7 +103,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         //1.3 按照品牌分类过滤，根据前端页面的点击分类进行过滤查询
         if (!"".equals(searchMap.get("brand"))) {    //如果用户选择了品牌
             FilterQuery filterQuery = new SimpleFilterQuery();
-//        searchMap.get的key是controllerJs中传过来的key一样
+        //searchMap.get的key是controllerJs中传过来的key一样
             Criteria filterCriteria = new Criteria("item_brand").is(searchMap.get("brand"));
             filterQuery.addCriteria(filterCriteria);
             query.addFilterQuery(filterQuery);
@@ -111,8 +113,8 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         if (searchMap.get("spec") != null) {
             Map<String, String> specMap = (Map<String, String>) searchMap.get("spec");
             for (String key : specMap.keySet()) {
-//        searchMap.get的key是controllerJs中传过来的key一样，表示前端页面所选择的值
-//        规格参数是一个动态域，需要拼接,获取规格map中的key
+                // searchMap.get的key是controllerJs中传过来的key一样，表示前端页面所选择的值
+                //规格参数是一个动态域，需要拼接,获取规格map中的key
                 Criteria filterCriteria = new Criteria("item_spec_" + key).is(specMap.get(key));
                 FilterQuery filterQuery = new SimpleFilterQuery(filterCriteria);
                 query.addFilterQuery(filterQuery);
@@ -127,7 +129,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
             //如果最低价格不等于0，前端传过来的值都是"0-500","500-1000"，先分割成一个个数字字符串,比较最大和最小值
             if (!price[0].equals("0")) {    // 如果选中了价格为“0”的条件
                 FilterQuery filterQuery = new SimpleFilterQuery();
-//        searchMap.get的key是controllerJs中传过来的key一样
+            //searchMap.get的key是controllerJs中传过来的key一样
                 Criteria filterCriteria = new Criteria("item_price").greaterThanEqual(price[0]);
                 filterQuery.addCriteria(filterCriteria);
                 query.addFilterQuery(filterQuery);
@@ -208,16 +210,16 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         //按照关键字查询，相当于where语句
         Criteria criteria = new Criteria("item_keywords").is(searchMap.get("keywords"));
         query.addCriteria(criteria);
-// 设置分组规则，根据哪一个域进行分组,即相当于group by,设置分组选项,可以多个
+        // 设置分组规则，根据哪一个域进行分组,即相当于group by,设置分组选项,可以多个
         GroupOptions groupOptions = new GroupOptions().addGroupByField("item_category");
         query.setGroupOptions(groupOptions);
-//        分组查询，要基于某个查询条件查询，获取分组页
+        //分组查询，要基于某个查询条件查询，获取分组页
         GroupPage<TbItem> page = solrTemplate.queryForGroupPage(query, TbItem.class);
-//        获取分组结果对象，可能有多个分组结果
+        //获取分组结果对象，可能有多个分组结果
         GroupResult<TbItem> groupResult = page.getGroupResult("item_category");
-//        获取分组入口页，得到具体分组数据，实体分组入口
+        //获取分组入口页，得到具体分组数据，实体分组入口
         Page<GroupEntry<TbItem>> groupEntries = groupResult.getGroupEntries();
-//        获取分组入口集合,得到具体的分组入口
+        //获取分组入口集合,得到具体的分组入口
         List<GroupEntry<TbItem>> entryList = groupEntries.getContent();
         for (GroupEntry<TbItem> entry : entryList) {
             //将分组结果的名称封装到返回值列表中,返回一个字符串

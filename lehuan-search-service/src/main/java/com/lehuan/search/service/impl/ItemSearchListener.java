@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * @program: lehuan-parent
- * @description: 监听类
+ * @description: 监听类，用于导入数据到索引库
  * @author: baichen
  **/
 //包扫描后注入到spring容器中
@@ -22,7 +22,6 @@ import java.util.List;
 public class ItemSearchListener implements MessageListener {
     @Autowired
     private ItemSearchService itemSearchSearchService;  //本地调用
-
     @Override
     public void onMessage(Message message) {
         TextMessage textMessage = (TextMessage) message;
@@ -33,7 +32,6 @@ public class ItemSearchListener implements MessageListener {
             List<TbItem> itemList = JSON.parseArray(text, TbItem.class);
             itemSearchSearchService.importList(itemList);
             System.out.println("导入到solr索引库");
-
         } catch (JMSException e) {
             e.printStackTrace();
         }
