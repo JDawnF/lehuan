@@ -9,17 +9,17 @@
 						<li class="f-item">请<a href="login.html" target="_blank">登录</a>　<span><a href="register.html" target="_blank">免费注册</a></span></li>
 					</ul>
 					<ul class="fr">
-                        <li class="f-item"><a href="home-index.html" target="_blank">我的订单</a></li>
-                        <li class="f-item space"></li>
-                        <li class="f-item"><a href="home-index.html" target="_blank">我的乐换</a></li>
-                        <li class="f-item space"></li>
-                        <li class="f-item"><a href="#">关注乐换</a></li>
-                        <li class="f-item space"></li>
-                        <li class="f-item" id="service">
-                            <span><a href="#">客户服务</a></span>
-                        </li>
-                        <li class="f-item space"></li>
-                        <li class="f-item"><a href="#">网站导航</a></li>
+						<li class="f-item"><a href="home-index.html" target="_blank">我的订单</a></li>
+						<li class="f-item space"></li>
+						<li class="f-item"><a href="home-index.html" target="_blank">我的乐换</a></li>
+						<li class="f-item space"></li>
+						<li class="f-item"><a href="#">关注乐换</a></li>
+						<li class="f-item space"></li>
+						<li class="f-item" id="service">
+							<span><a href="#">客户服务</a></span>
+						</li>
+						<li class="f-item space"></li>
+						<li class="f-item"><a href="#">网站导航</a></li>
 					</ul>
 				</div>
 			</div>

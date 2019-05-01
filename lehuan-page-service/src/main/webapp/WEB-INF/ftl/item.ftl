@@ -181,7 +181,7 @@
                             <ul class="btn-choose unstyled">
                                 <li>
                                     <#--添加到购物车，并弹出商品id-->
-                                    <a href="#" class="sui-btn  btn-danger addshopcar" ng-click="addToCart()">加入购物车</a>
+                                    <aclass="sui-btn  btn-danger addshopcar" ng-click="addToCart()">加入购物车</a>
                                 </li>
                             </ul>
                         </div>

@@ -14,9 +14,9 @@
     <!--security="none"的话，无论是否登陆都不能获取登录人账号的值-->
     <!--<http pattern="/cart/*.do" security="none"></http>-->
 
-    <!--   entry-point-ref  入口点引用,不启动SpEL表达式 -->
+    <!--   entry-point-ref  入口点引用,不启动SpEL表达式，页面拦截规则 -->
     <http use-expressions="false" entry-point-ref="casProcessingFilterEntryPoint">
-        <!--access="IS_AUTHENTICATED_ANONYMOUSLY" 用于设置资源可以在不登陆时可以访问。而且要在下面的”/**”上面-->
+    <!--access="IS_AUTHENTICATED_ANONYMOUSLY" 用于设置资源可以在不登陆时可以访问。而且要在下面的”/**”上面-->
         <intercept-url pattern="/cart/*.do" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/**" access="ROLE_USER"/>
         <csrf disabled="true"/>

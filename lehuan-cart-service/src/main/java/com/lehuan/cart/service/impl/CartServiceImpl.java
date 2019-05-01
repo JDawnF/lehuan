@@ -43,7 +43,7 @@ public class CartServiceImpl implements CartService {
         }
         //2.获取商家ID
         String sellerId = item.getSellerId();
-        //3.根据商家ID判断购物车列表中，是否存在该商家的购物车
+        //3.根据商家ID查询购物车对象,查找属于当前商家的购物车
         // 因为每个商家的商品都是购物车列表中的一个列表
         Cart cart = this.searchCartBySellerId(cartList, sellerId);
         //4.如果购物车列表中不存在该商家的购物车
@@ -109,7 +109,6 @@ public class CartServiceImpl implements CartService {
     public void saveCartListToRedis(String username, List<Cart> cartList) {
         System.out.println("向redis存入购物车数据....." + username);
         redisTemplate.boundHashOps("cartList").put(username, cartList);
-
     }
 
     /**
@@ -130,15 +129,14 @@ public class CartServiceImpl implements CartService {
     }
 
     /**
-     * 根据商家ID查询购物车对象,判断是否属于当前商家
-     *
+     * 根据商家ID查询购物车对象,查找属于当前商家的购物车
      * @param cartList 购物车列表
      * @param sellerId 商家ID
      * @return 返回购物车
      */
     private Cart searchCartBySellerId(List<Cart> cartList, String sellerId) {
         for (Cart cart : cartList) {
-//            判断是否属于当前商家，是的话就返回购物车当前这条记录，否则返回null
+//  判断是否属于当前商家，是的话就返回购物车当前这条记录，否则返回null
             if (cart.getSellerId().equals(sellerId)) {
                 return cart;
             }

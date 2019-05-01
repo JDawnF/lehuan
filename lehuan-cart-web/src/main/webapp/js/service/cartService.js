@@ -8,7 +8,7 @@ app.service('cartService', function ($http) {
     this.addGoodsToCartList = function (itemId, num) {
         return $http.get('cart/addGoodsToCartList.do?itemId=' + itemId + '&num=' + num);
     }
-    //求合计商品数量,遍历每个商家下面的商品订单list对应的具体商品订单
+    //求合计商品数量和计算总金额,遍历每个商家下面的商品订单list对应的具体商品订单
     this.sum = function (cartList) {
         var totalValue = {totalNum: 0, totalMoney: 0.00};   //合计实体，是一个Json格式的变量
         for (var i = 0; i < cartList.length; i++) {
