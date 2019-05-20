@@ -102,7 +102,7 @@ public class TypeTemplateController {
 	
 		/**
 	 * 查询+分页
-	 * @param brand
+	 * @param typeTemplate
 	 * @param page
 	 * @param rows
 	 * @return

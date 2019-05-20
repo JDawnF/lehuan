@@ -100,6 +100,7 @@ public class SpecificationServiceImpl implements SpecificationService {
 
     /**
      * 根据ID获取规格组合实体
+     *
      * @param id
      * @return
      */
@@ -155,9 +156,9 @@ public class SpecificationServiceImpl implements SpecificationService {
         return new PageResult(page.getTotal(), page.getResult());
     }
 
-		@Override
-		public List<Map> selectOptionList() {
-			return specificationMapper.selectOptionList();
-		}
+    @Override
+    public List<Map> selectOptionList() {
+        return specificationMapper.selectOptionList();
+    }
 
 }

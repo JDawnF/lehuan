@@ -178,7 +178,6 @@ public class SellerServiceImpl implements SellerService {
     public void updateStatus(String sellerId, String status) {
 //        根据主键查询实体
         TbSeller seller = sellerMapper.selectByPrimaryKey(sellerId);
-        System.out.println(sellerId+seller);
         seller.setStatus(status);
         sellerMapper.updateByPrimaryKey(seller);
     }
