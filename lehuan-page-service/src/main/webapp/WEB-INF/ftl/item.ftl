@@ -108,7 +108,7 @@
                             <span>降价通知</span>
                         </div>
                         <div class="fr remark">
-                            <i>累计评价</i><em>612188</em>
+                            <i>累计评价</i><em>6128</em>
                         </div>
                     </div>
                     <div class="summary-wrap">
@@ -117,8 +117,7 @@
                         </div>
                         <div class="fl fix-width">
                             <i class="red-bg">加价购</i>
-                            <em class="t-gray">满999.00另加20.00元，或满1999.00另加30.00元，或满2999.00另加40.00元，即可在购物车换
-                                购热销商品</em>
+                            <em class="t-gray">满999.00另加20.00元，或满1999.00另加30.00元，即可在购物车换购热销商品</em>
                         </div>
                     </div>
                 </div>
@@ -136,7 +135,7 @@
                             <i>配 送 至</i>
                         </div>
                         <div class="fl fix-width">
-                            <em class="t-gray">满999.00另加20.00元，或满1999.00另加30.00元，或满2999.00另加40.00元，即可在购物车换购热销商品</em>
+                            <em class="t-gray">满999.00另加20.00元，或满1999.00另加30.00元，即可在购物车换购热销商品</em>
                         </div>
                     </div>
                 </div>
@@ -162,7 +161,6 @@
                                 </#list>
                                 </dl>
                             </#list>
-
                     </div>
 
                     <div class="summary-wrap">
@@ -181,7 +179,7 @@
                             <ul class="btn-choose unstyled">
                                 <li>
                                     <#--添加到购物车，并弹出商品id-->
-                                    <aclass="sui-btn  btn-danger addshopcar" ng-click="addToCart()">加入购物车</a>
+                                    <a class="sui-btn  btn-danger addshopcar" ng-click="addToCart()">加入购物车</a>
                                 </li>
                             </ul>
                         </div>
@@ -242,7 +240,7 @@
                                         <img src="img/_/part02.png"/>
                                     </div>
                                     <div class="attr">
-                                        <em>Apple苹果iPhone 6s (A1699)</em>
+                                        <em>Apple苹果iPhone XR</em>
                                     </div>
                                     <div class="price">
                                         <strong>
@@ -276,15 +274,6 @@
                                 <div class="list-wrap">
                                     <div class="p-img">
                                         <img src="img/_/part02.png"/>
-                                    </div>
-                                    <div class="attr">
-                                        <em>Apple苹果iPhone 6s (A1699)</em>
-                                    </div>
-                                    <div class="price">
-                                        <strong>
-                                            <em>¥</em>
-                                            <i>6088.00</i>
-                                        </strong>
                                     </div>
                                     <div class="operate">
                                         <a href="javascript:void(0);" class="sui-btn btn-bordered">加入购物车</a>

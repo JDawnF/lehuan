@@ -11,7 +11,7 @@
     <http pattern="/image/**" security="none"></http>
     <http pattern="/plugins/**" security="none"></http>
     <http pattern="/register.html" security="none"></http>
-    <!--//登录和发送验证码要放行-->
+    <!--登录和发送验证码要放行-->
     <http pattern="/user/add.do" security="none"></http>
     <http pattern="/user/sendCode.do" security="none"></http>
 
