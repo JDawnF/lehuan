@@ -47,6 +47,7 @@
     <div id="item">
         <#--展示商品分类面包屑,商品分类名称-->
         <div class="crumb-wrap">
+        <#--sui-breadcrumb是面包屑插件中的类-->
             <ul class="sui-breadcrumb">
                 <li>
                     <a href="#">${itemCat1}</a>

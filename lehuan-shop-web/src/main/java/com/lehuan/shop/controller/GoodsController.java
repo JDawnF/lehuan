@@ -93,6 +93,7 @@ public class GoodsController {
 
     /**
      * 获取商品实体
+     *
      * @param id
      */
     @RequestMapping("/findOne")
@@ -135,17 +136,17 @@ public class GoodsController {
 
     /**
      * 商品批量上下架
+     *
      * @param ids
      * @return
      */
     @RequestMapping("/updateIsMarketable")
     public Result updateIsMarketable(Long[] ids, String isMarketable) {
         try {
+            for (Long id : ids)
+                System.out.println("controller层----商品id是" + id);
             goodsService.updateIsMarketable(ids, isMarketable);
             return new Result(true, "上下架成功");
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-            return new Result(false, e.getMessage());
         } catch (Exception e) {
             return new Result(false, "上下架失败");
         }

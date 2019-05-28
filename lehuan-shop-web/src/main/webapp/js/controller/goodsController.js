@@ -224,7 +224,7 @@ app.controller('goodsController', function ($scope, $controller, $location, good
     //创建SKU列表
     $scope.createItemList = function () {
         //先初始化一个不带规格名称的集合，只有一条记录
-        $scope.entity.itemList = [{spec: {}, price: 0, num: 99999, status: '0', isDefault: '0'}];
+        $scope.entity.itemList = [{spec: {}, price: 0, num: 368, status: '0', isDefault: '0'}];
         var items = $scope.entity.goodsDesc.specificationItems;
         //    循环用户选择的规格，根据规格名称和已选择的规格选项对原集合进行扩充，
         // 添加规格名称和值，新增的记录数与选择的规格选项个数相同
@@ -290,9 +290,10 @@ app.controller('goodsController', function ($scope, $controller, $location, good
     //批量上下架
     $scope.updateIsMarketable = function (isMarketable) {
         //获取选中的复选框
-        goodsService.updateIsMarketable($scope.selectIds, isMarketable).success(
+        goodsService.updateISMarketable($scope.selectIds, isMarketable).success(
             function (response) {
                 if (response.success) {
+                    // alert("123");
                     $scope.reloadList();//刷新列表
                     $scope.selectIds = [];//清空记录id的数组
                 } else {

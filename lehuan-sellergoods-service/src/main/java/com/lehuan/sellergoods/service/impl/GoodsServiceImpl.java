@@ -124,7 +124,7 @@ public class GoodsServiceImpl implements GoodsService {
             item.setPrice(goods.getGoods().getPrice());//价格
             item.setStatus("1");//状态
             item.setIsDefault("1");//是否默认
-            item.setNum(99999);//库存数量
+            item.setNum(999);//库存数量
             item.setSpec("{}"); //没有规格存一个空括号
             setItemValus(goods, item);
             itemMapper.insert(item);
@@ -271,13 +271,17 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public void updateIsMarketable(Long[] ids, String isMarketable) {
+        System.out.println("开始更新上下架状态");
         for (Long id : ids) {
+            System.out.println("商品的id是"+id);
             TbGoods tbGoods = goodsMapper.selectByPrimaryKey(id);
             //只有审核通过的才能上下架
             if ("1".equals(tbGoods.getAuditStatus())) {
+                System.out.println("商品已经审核");
                 tbGoods.setIsMarketable(isMarketable);
                 goodsMapper.updateByPrimaryKey(tbGoods);
             } else {
+                System.out.println("商品未审核");
                 throw new RuntimeException("只有审核通过的才能上下架");
             }
         }

@@ -1,4 +1,4 @@
-app.controller('contentController',function($scope,contentService){
+app.controller('contentController',function($scope,contentService,loginService){
     //广告集合，有多组广告，因为广告分类ID不同
 	$scope.contentList=[];//广告列表，有多组广告
 	$scope.findByCategoryId=function(categoryId){
@@ -15,4 +15,13 @@ app.controller('contentController',function($scope,contentService){
         location.href="http://localhost:9104/search.html#?keywords="+$scope.keywords;
     }
 
+	// 显示用户名
+	$scope.showName=function(){
+		loginService.showName().success(
+			function(response){
+				//绑定用户名，后端是一个map，key是loginName
+				$scope.loginName=response.loginName;
+			}
+		);
+	}
 });

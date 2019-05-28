@@ -30,7 +30,7 @@ app.service('goodsService',function($http){
 		return $http.post('../goods/search.do?page='+page+"&rows="+rows, searchEntity);
 	}
 	//批量上下架
-	this.updateIsMarketable=function(ids,isMarketable){
+	this.updateISMarketable=function(ids,isMarketable){
 		return $http.get('../goods/updateIsMarketable.do?ids='+ids+"&isMarketable="+isMarketable);
 	}
 });

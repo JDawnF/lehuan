@@ -19,10 +19,10 @@
                 var skuList = [
           //  itemList是后端代码中的数据模型map中的value
            {
-               id:1369308,         
-               title: '华为 HUAWEI P30 Pro 超感光徕卡四摄10倍混合变焦麒麟980芯片屏内指纹 移动4G 64G',
-               price:4999,       
-               spec:{"网络":"移动4G","机身内存":"64G"}
+               id:1369352,         
+               title: 'Spring源码深度解析 第2版 计算机',
+               price:85,       
+               spec:{"书籍类型":"计算机"}
            },
         ];
 
@@ -118,13 +118,13 @@
         <div class="crumb-wrap">
             <ul class="sui-breadcrumb">
                 <li>
-                    <a href="#">手机</a>
+                    <a href="#">书</a>
                 </li>
                 <li>
-                    <a href="#">手机通讯</a>
+                    <a href="#">科技</a>
                 </li>
                 <li>
-                    <a href="#">手机</a>
+                    <a href="#">计算机与互联网</a>
                 </li>
 
             </ul>
@@ -137,7 +137,7 @@
                     <!--默认第一个预览-->
                     <div id="preview" class="spec-preview">
 							<span class="jqzoom">
-							     <img jqimg="http://192.168.98.137/group1/M00/00/00/wKhiiVzqxxOACsIdAACinlTYMDk800.jpg" src="http://192.168.98.137/group1/M00/00/00/wKhiiVzqxxOACsIdAACinlTYMDk800.jpg" width="400px"
+							     <img jqimg="http://192.168.98.137/group1/M00/00/00/wKhiiVztDAeAW0XtAADn72W9bCE250.jpg" src="http://192.168.98.137/group1/M00/00/00/wKhiiVztDAeAW0XtAADn72W9bCE250.jpg" width="400px"
                                       height="400px"/>
 							</span>
                     </div>
@@ -147,8 +147,7 @@
                         <!--左右按钮-->
                         <div class="items">
                             <ul>
-                                       <li><img src="http://192.168.98.137/group1/M00/00/00/wKhiiVzqxxOACsIdAACinlTYMDk800.jpg" bimg="http://192.168.98.137/group1/M00/00/00/wKhiiVzqxxOACsIdAACinlTYMDk800.jpg" onmousemove="preview(this)"/></li>
-                                       <li><img src="http://192.168.98.137/group1/M00/00/00/wKhiiVzqxyGAHSLJAABUu2BK8v0998.jpg" bimg="http://192.168.98.137/group1/M00/00/00/wKhiiVzqxyGAHSLJAABUu2BK8v0998.jpg" onmousemove="preview(this)"/></li>
+                                       <li><img src="http://192.168.98.137/group1/M00/00/00/wKhiiVztDAeAW0XtAADn72W9bCE250.jpg" bimg="http://192.168.98.137/group1/M00/00/00/wKhiiVztDAeAW0XtAADn72W9bCE250.jpg" onmousemove="preview(this)"/></li>
                             </ul>
                         </div>
                         <a class="next">&gt;</a>
@@ -159,7 +158,7 @@
                 <div class="sku-name">
                     <h4>{{sku.title}}</h4>
                 </div>
-                <div class="news"><span>麒麟980芯片，6.47英寸OLED曲面屏，4000万感光莱卡四摄，10倍混合变焦 </span></div>
+                <div class="news"><span>畅销长销Spring图书全新升级版本 基于Spring 5.x编写 庖丁解牛式讲解Spring工作原理 </span></div>
                 <div class="summary">
                     <div class="summary-wrap">
                         <div class="fl title">
@@ -171,7 +170,7 @@
                             <span>降价通知</span>
                         </div>
                         <div class="fr remark">
-                            <i>累计评价</i><em>612188</em>
+                            <i>累计评价</i><em>6128</em>
                         </div>
                     </div>
                     <div class="summary-wrap">
@@ -180,8 +179,7 @@
                         </div>
                         <div class="fl fix-width">
                             <i class="red-bg">加价购</i>
-                            <em class="t-gray">满999.00另加20.00元，或满1999.00另加30.00元，或满2999.00另加40.00元，即可在购物车换
-                                购热销商品</em>
+                            <em class="t-gray">满999.00另加20.00元，或满1999.00另加30.00元，即可在购物车换购热销商品</em>
                         </div>
                     </div>
                 </div>
@@ -199,7 +197,7 @@
                             <i>配 送 至</i>
                         </div>
                         <div class="fl fix-width">
-                            <em class="t-gray">满999.00另加20.00元，或满1999.00另加30.00元，或满2999.00另加40.00元，即可在购物车换购热销商品</em>
+                            <em class="t-gray">满999.00另加20.00元，或满1999.00另加30.00元，即可在购物车换购热销商品</em>
                         </div>
                     </div>
                 </div>
@@ -208,48 +206,15 @@
                                 <dl>
                                     <dt>
                                         <div class="fl title">
-                                            <i>网络</i>
+                                            <i>书籍类型</i>
                                         </div>
                                     </dt>
 								  <dd><a href="javascript:;"
-                                         class="{{isSelected('网络','移动4G')?'selected':''}}"
-                                         ng-click="selectSpecification('网络','移动4G')">移动4G
-                                      <span title="点击取消选择">&nbsp;</span>
-                                  </a></dd>
-								  <dd><a href="javascript:;"
-                                         class="{{isSelected('网络','联通4G')?'selected':''}}"
-                                         ng-click="selectSpecification('网络','联通4G')">联通4G
-                                      <span title="点击取消选择">&nbsp;</span>
-                                  </a></dd>
-								  <dd><a href="javascript:;"
-                                         class="{{isSelected('网络','电信4G')?'selected':''}}"
-                                         ng-click="selectSpecification('网络','电信4G')">电信4G
-                                      <span title="点击取消选择">&nbsp;</span>
-                                  </a></dd>
-								  <dd><a href="javascript:;"
-                                         class="{{isSelected('网络','双卡')?'selected':''}}"
-                                         ng-click="selectSpecification('网络','双卡')">双卡
+                                         class="{{isSelected('书籍类型','计算机')?'selected':''}}"
+                                         ng-click="selectSpecification('书籍类型','计算机')">计算机
                                       <span title="点击取消选择">&nbsp;</span>
                                   </a></dd>
                                 </dl>
-                                <dl>
-                                    <dt>
-                                        <div class="fl title">
-                                            <i>机身内存</i>
-                                        </div>
-                                    </dt>
-								  <dd><a href="javascript:;"
-                                         class="{{isSelected('机身内存','64G')?'selected':''}}"
-                                         ng-click="selectSpecification('机身内存','64G')">64G
-                                      <span title="点击取消选择">&nbsp;</span>
-                                  </a></dd>
-								  <dd><a href="javascript:;"
-                                         class="{{isSelected('机身内存','128G')?'selected':''}}"
-                                         ng-click="selectSpecification('机身内存','128G')">128G
-                                      <span title="点击取消选择">&nbsp;</span>
-                                  </a></dd>
-                                </dl>
-
                     </div>
 
                     <div class="summary-wrap">
@@ -266,7 +231,7 @@
                         <div class="fl">
                             <ul class="btn-choose unstyled">
                                 <li>
-                                    <aclass="sui-btn  btn-danger addshopcar" ng-click="addToCart()">加入购物车</a>
+                                    <a class="sui-btn  btn-danger addshopcar" ng-click="addToCart()">加入购物车</a>
                                 </li>
                             </ul>
                         </div>
@@ -327,7 +292,7 @@
                                         <img src="img/_/part02.png"/>
                                     </div>
                                     <div class="attr">
-                                        <em>Apple苹果iPhone 6s (A1699)</em>
+                                        <em>Apple苹果iPhone XR</em>
                                     </div>
                                     <div class="price">
                                         <strong>
@@ -361,15 +326,6 @@
                                 <div class="list-wrap">
                                     <div class="p-img">
                                         <img src="img/_/part02.png"/>
-                                    </div>
-                                    <div class="attr">
-                                        <em>Apple苹果iPhone 6s (A1699)</em>
-                                    </div>
-                                    <div class="price">
-                                        <strong>
-                                            <em>¥</em>
-                                            <i>6088.00</i>
-                                        </strong>
                                     </div>
                                     <div class="operate">
                                         <a href="javascript:void(0);" class="sui-btn btn-bordered">加入购物车</a>
@@ -487,43 +443,44 @@
                     <div class="tab-content tab-wraped">
                         <div id="one" class="tab-pane active">
                             <ul class="goods-intro unstyled">
-									      <li>内存大小：128G</li>
-									      <li>颜色：蓝色、白色、红色</li>
                             </ul>
                             <div class="intro-detail">
-                            <div class="Ptable" style="margin:10px 0px;padding:0px;color:#666666;font-family:tahoma, arial, &quot;background-color:#FFFFFF;">
-	<p>
-		<br />
-	</p>
-	<h3 style="font-weight:400;font-size:12px;text-align:right;">
-		操作系统：Android<span style="color:#999999;">主芯片</span><span style="color:#999999;">CPU品牌海思（Hisilicon）CPU频率2*Cortex-A76 Based 2.6GHz+ 2*Cortex-A76 Based 1.92GHz+ 4*Cortex-A55 1.8GHzCPU核数八核CPU型号麒麟980</span><span style="color:#999999;">网络支持</span> 
-	</h3>
-	<p>
-		<br />
-	</p>
-	<div class="Ptable-item" style="margin:0px;padding:12px 0px;color:#999999;">
-		双卡机类型双卡双待最大支持SIM卡数量2个SIM卡类型<a href="https://item.jd.com/100004404948.html#none"><span class="Ptable-sprite-question" style="vertical-align:-3px;background:url(&quot;"></span></a>Nano SIM4G网络<a href="https://item.jd.com/100004404948.html#none"><span class="Ptable-sprite-question" style="vertical-align:-3px;background:url(&quot;"></span></a>4G：移动（TD-LTE)；4G：联通(FDD-LTE)；4G：电信(FDD-LTE)；4G：联通(TD-LTE)；4G：电信（TD-LTE）3G/2G网络3G：移动(TD-SCDMA)；3G：联通(WCDMA)；3G：电信(CDMA2000)网络频率（2G/3G）2G：GSM 850/900/1800/1900；2G：CDMA 800；3G：TD-SCDMA 1900/2000；3G：WCDMA 850/900/1900/2100是否支持同时使用联通卡不可同时上网，仅支持卡A上网，卡B通话。<span>存储</span> 
-	</div>
-	<div class="Ptable-item" style="margin:0px;padding:12px 0px;color:#999999;">
-		ROM<a href="https://item.jd.com/100004404948.html#none"><span class="Ptable-sprite-question" style="vertical-align:-3px;background:url(&quot;"></span></a>256GBRAM<a href="https://item.jd.com/100004404948.html#none"><span class="Ptable-sprite-question" style="vertical-align:-3px;background:url(&quot;"></span></a>8GB存储卡NM存储卡最大存储扩展容量256GB<span>屏幕</span> 
-	</div>
-	<div class="Ptable-item" style="margin:0px;padding:12px 0px;color:#999999;">
-		主屏幕尺寸（英寸）6.47英寸分辨率2340×1080屏幕材质类型OLED<span>前置摄像头</span> 
-	</div>
-	<div class="Ptable-item" style="margin:0px;padding:12px 0px;color:#999999;">
-		前置摄像头3200万像素前摄光圈大小f/2.0拍照特点美颜；全景；滤镜；美肤录像功能备注备注： 不同拍照模式的照片像素可能有差异，请以实际为准。<span>后置摄像头</span> 
-	</div>
-	<div class="Ptable-item" style="margin:0px;padding:12px 0px;color:#999999;">
-		摄像头数量<a href="https://item.jd.com/100004404948.html#none"><span class="Ptable-sprite-question" style="vertical-align:-3px;background:url(&quot;"></span></a>4个后置摄像头4000万+2000万+800万像素拍照特点数码变焦；光学变焦；自动对焦；防抖；美颜；微距；全景；滤镜；HDR；夜间拍摄；美肤录像功能备注同时支持华为Time-of-Flight（ToF）摄像头<span>电池信息</span> 
-	</div>
+                            <div>
+	<span><br />
+</span>
 </div>
+<ul class="key clearfix" style="color:#666666;font-family:&quot;background-color:#FFFFFF;">
+	<li style="vertical-align:top;color:#323232;">
+		开 本：16开
+	</li>
+	<li style="vertical-align:top;color:#323232;">
+		纸 张：胶版纸
+	</li>
+	<li style="vertical-align:top;color:#323232;">
+		包 装：平装-胶订
+	</li>
+	<li style="vertical-align:top;color:#323232;">
+		是否套装：否
+	</li>
+	<li style="vertical-align:top;color:#323232;">
+		国际标准书号ISBN：9787115499141
+	</li>
+	<li class="clearfix fenlei" id="detail-category-path" style="vertical-align:top;color:#323232;">
+		所属分类：
+	</li>
+	<li class="clearfix fenlei" id="detail-category-path" style="vertical-align:top;color:#323232;">
+		<div>
+			<br />
+		</div>
+	</li>
+</ul>
                             </div>
                         </div>
                         <div id="two" class="tab-pane">
-                            <p>纸盒</p>
+                            <p>纸皮</p>
                         </div>
                         <div id="three" class="tab-pane">
-                            <p>半年可退换</p>
+                            <p>不退换</p>
                         </div>
                         <div id="four" class="tab-pane">
                             <p>商品评价</p>
@@ -758,6 +715,7 @@
 			</div>
 
 			<div class="toolbar-header"></div>
+
 			<div class="toolbar-mini"></div>
 
 		</div>
