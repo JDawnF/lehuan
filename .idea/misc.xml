@@ -4,9 +4,21 @@
     <asm skipDebug="false" skipFrames="false" skipCode="false" expandFrames="false" />
     <groovy codeStyle="LEGACY" />
   </component>
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/lehuan-cart-service" />
+    <file type="web" url="file://$PROJECT_DIR$/lehuan-cart-web" />
+    <file type="web" url="file://$PROJECT_DIR$/lehuan-content-service" />
+    <file type="web" url="file://$PROJECT_DIR$/lehuan-manager-web" />
+    <file type="web" url="file://$PROJECT_DIR$/lehuan-order-service" />
+    <file type="web" url="file://$PROJECT_DIR$/lehuan-page-service" />
+    <file type="web" url="file://$PROJECT_DIR$/lehuan-page-web" />
+    <file type="web" url="file://$PROJECT_DIR$/lehuan-portal-web" />
+    <file type="web" url="file://$PROJECT_DIR$/lehuan-search-service" />
+    <file type="web" url="file://$PROJECT_DIR$/lehuan-search-web" />
     <file type="web" url="file://$PROJECT_DIR$/lehuan-sellergoods-service" />
+    <file type="web" url="file://$PROJECT_DIR$/lehuan-shop-web" />
+    <file type="web" url="file://$PROJECT_DIR$/lehuan-user-service" />
+    <file type="web" url="file://$PROJECT_DIR$/lehuan-user-web" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -15,7 +27,10 @@
       </list>
     </option>
   </component>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/lehuan-shop-web/src/main/webapp/cooperation.html" />
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/out" />
+    <output url="file://$PROJECT_DIR$/classes" />
   </component>
 </project>

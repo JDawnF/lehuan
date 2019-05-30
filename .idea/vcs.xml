@@ -2,10 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/lehuan-common" vcs="svn" />
-    <mapping directory="$PROJECT_DIR$/lehuan-dao" vcs="svn" />
-    <mapping directory="$PROJECT_DIR$/lehuan-pojo" vcs="svn" />
-    <mapping directory="$PROJECT_DIR$/lehuan-sellergoods-interface" vcs="svn" />
-    <mapping directory="$PROJECT_DIR$/lehuan-sellergoods-service" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/lehuan-order-interface" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lehuan-order-service" vcs="Git" />
   </component>
 </project>

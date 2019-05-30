@@ -100,7 +100,7 @@ public class TypeTemplateController {
 		}
 	}
 	
-		/**
+	/**
 	 * 查询+分页
 	 * @param typeTemplate
 	 * @param page

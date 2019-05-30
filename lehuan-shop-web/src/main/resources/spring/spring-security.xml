@@ -44,6 +44,7 @@
     <beans:bean id="userDetailService" class="com.lehuan.shop.service.UserDetailsServiceImpl">
         <beans:property name="sellerService" ref="sellerService"></beans:property>
     </beans:bean>
+<!--注入Spring Security的BCryptPasswordEncoder工具类-->
     <beans:bean id="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
     <!-- 引用dubbo 服务 -->
     <dubbo:application name="lehuan-shop-web" />

@@ -57,6 +57,15 @@ app.controller('cartController', function ($scope, cartService) {
     $scope.selectPayType = function (type) {
         $scope.order.paymentType = type;
     }
+    // 显示用户名
+    $scope.showName=function(){
+        cartService.showName().success(
+            function(response){
+                //绑定用户名，后端是一个map，key是loginName
+                $scope.loginName=response.loginName;
+            }
+        );
+    }
     //保存订单
     // 这里的order是js的service层传递过来的对象，将address对象的值对order对象进行
     // 重新赋值，order的属性是根据数据库的字段进行去掉下划线，然后变成大写拼接而成,这样可以对应数据库的字段

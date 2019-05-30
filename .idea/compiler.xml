@@ -6,12 +6,60 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="lehuan-cart-interface" />
+        <module name="lehuan-cart-service" />
+        <module name="lehuan-cart-web" />
         <module name="lehuan-common" />
+        <module name="lehuan-content-interface" />
+        <module name="lehuan-content-service" />
         <module name="lehuan-dao" />
+        <module name="lehuan-manager-web" />
+        <module name="lehuan-order-interface" />
+        <module name="lehuan-order-service" />
+        <module name="lehuan-page-interface" />
+        <module name="lehuan-page-service" />
+        <module name="lehuan-page-web" />
         <module name="lehuan-pojo" />
+        <module name="lehuan-portal-web" />
+        <module name="lehuan-search-interface" />
+        <module name="lehuan-search-service" />
+        <module name="lehuan-search-web" />
         <module name="lehuan-sellergoods-interface" />
         <module name="lehuan-sellergoods-service" />
+        <module name="lehuan-shop-web" />
+        <module name="lehuan-solr-util" />
+        <module name="lehuan-user-interface" />
+        <module name="lehuan-user-service" />
+        <module name="lehuan-user-web" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="lehuan-cart-interface" target="1.7" />
+      <module name="lehuan-cart-service" target="1.7" />
+      <module name="lehuan-cart-web" target="1.7" />
+      <module name="lehuan-common" target="1.7" />
+      <module name="lehuan-content-interface" target="1.7" />
+      <module name="lehuan-content-service" target="1.7" />
+      <module name="lehuan-dao" target="1.7" />
+      <module name="lehuan-manager-web" target="1.7" />
+      <module name="lehuan-order-interface" target="1.7" />
+      <module name="lehuan-order-service" target="1.7" />
+      <module name="lehuan-page-interface" target="1.7" />
+      <module name="lehuan-page-service" target="1.7" />
+      <module name="lehuan-page-web" target="1.7" />
+      <module name="lehuan-parent" target="1.7" />
+      <module name="lehuan-pojo" target="1.7" />
+      <module name="lehuan-portal-web" target="1.7" />
+      <module name="lehuan-search-interface" target="1.7" />
+      <module name="lehuan-search-service" target="1.7" />
+      <module name="lehuan-search-web" target="1.7" />
+      <module name="lehuan-sellergoods-interface" target="1.7" />
+      <module name="lehuan-sellergoods-service" target="1.7" />
+      <module name="lehuan-shop-web" target="1.7" />
+      <module name="lehuan-solr-util" target="1.7" />
+      <module name="lehuan-user-interface" target="1.7" />
+      <module name="lehuan-user-service" target="1.7" />
+      <module name="lehuan-user-web" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

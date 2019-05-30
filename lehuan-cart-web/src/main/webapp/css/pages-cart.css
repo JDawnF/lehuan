@@ -9,7 +9,7 @@
 
 .logo {
 	background: url(../img/Logo.png) no-repeat;
-	background-position: -370px 0;
+	/*background-position: -370px 0;*/
 	width: 177px;
 	height: 75px
 }

@@ -2,7 +2,32 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/lehuan-cart-interface/lehuan-cart-interface.iml" filepath="$PROJECT_DIR$/lehuan-cart-interface/lehuan-cart-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-cart-service/lehuan-cart-service.iml" filepath="$PROJECT_DIR$/lehuan-cart-service/lehuan-cart-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-cart-web/lehuan-cart-web.iml" filepath="$PROJECT_DIR$/lehuan-cart-web/lehuan-cart-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-common/lehuan-common.iml" filepath="$PROJECT_DIR$/lehuan-common/lehuan-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-content-interface/lehuan-content-interface.iml" filepath="$PROJECT_DIR$/lehuan-content-interface/lehuan-content-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-content-service/lehuan-content-service.iml" filepath="$PROJECT_DIR$/lehuan-content-service/lehuan-content-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-dao/lehuan-dao.iml" filepath="$PROJECT_DIR$/lehuan-dao/lehuan-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-manager-web/lehuan-manager-web.iml" filepath="$PROJECT_DIR$/lehuan-manager-web/lehuan-manager-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-order-interface/lehuan-order-interface.iml" filepath="$PROJECT_DIR$/lehuan-order-interface/lehuan-order-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-order-service/lehuan-order-service.iml" filepath="$PROJECT_DIR$/lehuan-order-service/lehuan-order-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-page-interface/lehuan-page-interface.iml" filepath="$PROJECT_DIR$/lehuan-page-interface/lehuan-page-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-page-service/lehuan-page-service.iml" filepath="$PROJECT_DIR$/lehuan-page-service/lehuan-page-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-page-web/lehuan-page-web.iml" filepath="$PROJECT_DIR$/lehuan-page-web/lehuan-page-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-parent.iml" filepath="$PROJECT_DIR$/lehuan-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-pojo/lehuan-pojo.iml" filepath="$PROJECT_DIR$/lehuan-pojo/lehuan-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-portal-web/lehuan-portal-web.iml" filepath="$PROJECT_DIR$/lehuan-portal-web/lehuan-portal-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-search-interface/lehuan-search-interface.iml" filepath="$PROJECT_DIR$/lehuan-search-interface/lehuan-search-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-search-service/lehuan-search-service.iml" filepath="$PROJECT_DIR$/lehuan-search-service/lehuan-search-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-search-web/lehuan-search-web.iml" filepath="$PROJECT_DIR$/lehuan-search-web/lehuan-search-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-sellergoods-interface/lehuan-sellergoods-interface.iml" filepath="$PROJECT_DIR$/lehuan-sellergoods-interface/lehuan-sellergoods-interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/lehuan-sellergoods-service/lehuan-sellergoods-service.iml" filepath="$PROJECT_DIR$/lehuan-sellergoods-service/lehuan-sellergoods-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-shop-web/lehuan-shop-web.iml" filepath="$PROJECT_DIR$/lehuan-shop-web/lehuan-shop-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-solr-util/lehuan-solr-util.iml" filepath="$PROJECT_DIR$/lehuan-solr-util/lehuan-solr-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-user-interface/lehuan-user-interface.iml" filepath="$PROJECT_DIR$/lehuan-user-interface/lehuan-user-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-user-service/lehuan-user-service.iml" filepath="$PROJECT_DIR$/lehuan-user-service/lehuan-user-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lehuan-user-web/lehuan-user-web.iml" filepath="$PROJECT_DIR$/lehuan-user-web/lehuan-user-web.iml" />
     </modules>
   </component>
 </project>

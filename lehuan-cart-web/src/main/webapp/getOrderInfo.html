@@ -15,7 +15,7 @@
     <script type="text/javascript" src="js/controller/cartController.js"></script>
 </head>
 
-<body ng-app="lehuan" ng-controller="cartController" ng-init="findAddressList();findCartList()">
+<body ng-app="lehuan" ng-controller="cartController" ng-init="findAddressList();findCartList();showName()">
 <!--head-->
 <div class="top">
     <div class="py-container">
@@ -23,12 +23,12 @@
             <ul class="fl">
                 <li class="f-item">乐换欢迎您！</li>
                 <span class="name">{{loginName}}</span>
-                <li class="f-item">请登录　<span><a href="#">免费注册</a></span></li>
+                <span class="safe"><a href="logout/cas">退出登录 </a></span>
             </ul>
             <ul class="fr">
-                <li class="f-item"><a href="home-index.html" target="_blank">我的订单</a></li>
+                <li class="f-item"><a href="http://localhost:9106/home-index.html" target="_blank">我的订单</a></li>
                 <li class="f-item space"></li>
-                <li class="f-item"><a href="home-index.html" target="_blank">我的乐换</a></li>
+                <li class="f-item"><a href="http://localhost:9106/home-index.html" target="_blank">我的乐换</a></li>
                 <li class="f-item space"></li>
                 <li class="f-item"><a href="#">关注乐换</a></li>
                 <li class="f-item space"></li>

@@ -32,4 +32,8 @@ app.service('cartService', function ($http) {
     this.submitOrder = function (order) {
         return $http.post('order/add.do', order);
     }
+    //读取列表数据绑定到表单中，显示用户名
+    this.showName=function(){
+        return $http.get('cart/name.do');
+    }
 });

@@ -33,7 +33,7 @@ app.controller('specificationController' ,function($scope,$controller,specificat
 	
 	//保存 
 	$scope.save=function(){				
-		var serviceObject;//服务层对象
+		var serviceObject;	//服务层对象
         //entity是个组合对象了，所以要写成entity.specification.id如果有ID
 		if($scope.entity.specification.id!=null){
 			serviceObject=specificationService.update( $scope.entity ); //修改  

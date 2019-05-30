@@ -4,8 +4,7 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
-    <!--让spring security放行-->
-    <!-- 匿名访问资源 -->
+    <!--匿名访问的资源，让spring security放行-->
     <http pattern="/css/**" security="none"></http>
     <http pattern="/js/**" security="none"></http>
     <http pattern="/img/**" security="none"></http>
@@ -19,8 +18,10 @@
     <!--access="IS_AUTHENTICATED_ANONYMOUSLY" 用于设置资源可以在不登陆时可以访问。而且要在下面的”/**”上面-->
         <intercept-url pattern="/cart/*.do" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/**" access="ROLE_USER"/>
+<!--CSRF,跨站请求伪造，也被称为“One Click Attack”或者Session Riding，通常缩写为CSRF或者XSRF，是一种对网站的恶意利用。
+    如果不关闭会出现403错误-->
         <csrf disabled="true"/>
-        <!-- custom-filter为过滤器， position 表示将过滤器放在指定的位置上，before表示放在指定位置之前  ，after表示放在指定的位置之后  -->
+        <!--custom-filter为过滤器， position表示将过滤器放在指定的位置上，before表示放在指定位置之前  ，after表示放在指定的位置之后  -->
         <custom-filter ref="casAuthenticationFilter" position="CAS_FILTER"/>
         <custom-filter ref="requestSingleLogoutFilter" before="LOGOUT_FILTER"/>
         <custom-filter ref="singleLogoutFilter" before="CAS_FILTER"/>
@@ -64,11 +65,9 @@
         </beans:property>
         <beans:property name="key" value="an_id_for_this_auth_provider_only"/>
     </beans:bean>
-    <!-- 认证类 -->
+    <!-- 认证类，UserDetailServiceImpl获取了用户登录名 -->
     <beans:bean id="userDetailsService" class="com.lehuan.cart.service.UserDetailServiceImpl"/>
-
     <!-- 认证过滤器 结束 -->
-
 
     <!-- 单点登出  开始  -->
     <beans:bean id="singleLogoutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter"/>

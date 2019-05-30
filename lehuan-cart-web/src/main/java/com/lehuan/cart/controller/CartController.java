@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
 import com.lehuan.cart.service.CartService;
 import com.lehuan.group.Cart;
+import com.lehuan.user.service.UserService;
 import common.CookieUtil;
 import entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @program: lehuan-parent
@@ -106,5 +109,13 @@ public class CartController {
             e.printStackTrace();
             return new Result(false, "存入购物车失败");
         }
+    }
+    @RequestMapping("/name")
+    public Map showName() {
+        //得到登陆用户名
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        Map map = new HashMap<>();
+        map.put("loginName", name);
+        return map;
     }
 }

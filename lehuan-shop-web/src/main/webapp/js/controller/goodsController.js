@@ -68,7 +68,7 @@ app.controller('goodsController', function ($scope, $controller, $location, good
     //     );
     // }
 
-    //保存
+    //新增或保存
     $scope.save = function () {
         //提取文本编辑器的值,商品介绍
         $scope.entity.goodsDesc.introduction = editor.html();
